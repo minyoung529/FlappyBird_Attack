@@ -11,5 +11,8 @@ public:
 public:
 	virtual void Init();
 	virtual void Update(char posOnBoard);
-};
+	virtual void Render(int offsetX, int offsetY);
 
+private:
+	bool isScorePlus;
+};

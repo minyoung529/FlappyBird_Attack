@@ -27,4 +27,7 @@ public:
 
 private:
 	Scene* curScene;
+public:
+	static SceneManager* sceneManager;
 };
+

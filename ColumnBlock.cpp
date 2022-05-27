@@ -1,11 +1,17 @@
 #include "ColumnBlock.h"
 #include "Core.h"
+#include "Player.h"
+#include "console.h"
 
-ColumnBlock::ColumnBlock() : Object({}, COLUMN)
+ColumnBlock::ColumnBlock()
+	: Object({}, COLUMN)
+	, isScorePlus(false)
 {
 }
 
-ColumnBlock::ColumnBlock(POSITION position) : Object(position, COLUMN)
+ColumnBlock::ColumnBlock(POSITION position)
+	: Object(position, COLUMN)
+	, isScorePlus(false)
 {
 }
 
@@ -25,4 +31,18 @@ void ColumnBlock::Update(char posOnBoard)
 	{
 		isDead = true;
 	}
+
+	if (position.x < PLAYER_X && !isScorePlus && position.y == 0)
+	{
+		isScorePlus = true;
+		Player::AddScore(1);
+	}
+}
+
+void ColumnBlock::Render(int offsetX, int offsetY)
+{
+	gotoxy(position.x * 2 + offsetX, position.y + offsetY);
+	setcolor(GREEN, BLACK);
+
+	cout << "бс";
 }

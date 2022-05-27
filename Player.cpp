@@ -1,13 +1,19 @@
 #include "Player.h"
 #include "console.h"
 #include "Core.h"
+#include "EndScene.h"
+#include "SceneManager.h"
 
-Player::Player()
+int Player::score = 0;
+
+Player::Player() : Object({}, PLAYER)
 {
+	score = 0;
 }
 
 Player::Player(POSITION position) : Object(position, PLAYER)
 {
+	score = 0;
 }
 
 Player::~Player()
@@ -33,14 +39,21 @@ void Player::Update(char posOnBoard)
 	CheckDead(posOnBoard);
 }
 
+void Player::Render(int offsetX, int offsetY)
+{
+	gotoxy(position.x * 2 + offsetX, position.y + offsetY);
+	setcolor(YELLOW, SKYBLUE);
+
+	cout << "¡Ú";
+}
+
 void Player::CheckDead(char posOnBoard)
 {
-	if (posOnBoard == FLOOR)
-	{
+	if (isDead) return;
 
-	}
-	else if (posOnBoard == COLUMN)
+	if (position.y == MAX_Y - 1 || posOnBoard == COLUMN)
 	{
-
+		isDead = true;
+		SceneManager::sceneManager->SetCurrentScene(new EndScene());
 	}
 }

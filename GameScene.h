@@ -1,7 +1,7 @@
 #pragma once
-#include"Scene.h"
 #include"Core.h"
 #include"Column.h"
+#include"Scene.h"
 #include<vector>
 using namespace std;
 
@@ -25,6 +25,8 @@ public:
 		return map[position.y][position.x];
 	}
 
+public:
+
 private:
 	void Draw();
 	void DeleteObject();
@@ -32,5 +34,6 @@ private:
 private:
 	int map[MAX_Y][MAX_X] = {EMPTY, };
 	Player* player;
-	vector<Object*> curSceneObjects;
+	vector<Object*> currentObjects;
+	bool isRelease = false;
 };

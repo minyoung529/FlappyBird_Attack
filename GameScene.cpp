@@ -3,6 +3,8 @@
 #include "console.h"
 
 GameScene::GameScene()
+	: player(nullptr)
+	, currentObjects{}
 {
 }
 
@@ -26,30 +28,40 @@ void GameScene::Init()
 		}
 	}
 
-	player = new Player({ 2, MAX_Y / 2 });
-	curSceneObjects.push_back(player);
+	player = new Player({ PLAYER_X, MAX_Y / 2 });
+	currentObjects.push_back(player);
 }
+
 
 void GameScene::Update()
 {
+	if (isRelease) return;
+
 	if (updateTime % 10 == 0)
 	{
-		GenerateColumn(curSceneObjects);
+		GenerateColumn(currentObjects);
 	}
 
-	for (int i = 0; i < curSceneObjects.size(); i++)
+	for (int i = 0; i < currentObjects.size(); i++)
 	{
-		POSITION pos = curSceneObjects[i]->GetPosition();
+		if (!currentObjects[i])continue;
+		if (currentObjects.empty() || i >= currentObjects.size())continue;
 
-		curSceneObjects[i]->Update(map[pos.y][pos.x]);
+		POSITION pos = currentObjects[i]->GetPosition();
+		currentObjects[i]->Update(map[pos.y][pos.x]);
+
+		if (isRelease || currentObjects.empty() || i >= currentObjects.size())
+		{
+			return;
+		}
 
 		if (IN_SCREEN(pos.x, pos.y))
 			map[pos.y][pos.x] = EMPTY;
 
-		pos = curSceneObjects[i]->GetPosition();
+		pos = currentObjects[i]->GetPosition();
 
 		if (IN_SCREEN(pos.x, pos.y))
-			map[pos.y][pos.x] = curSceneObjects[i]->GetObjectType();
+			map[pos.y][pos.x] = currentObjects[i]->GetObjectType();
 	}
 
 	DeleteObject();
@@ -60,18 +72,22 @@ void GameScene::Update()
 
 void GameScene::ReleaseScene()
 {
-	int size = curSceneObjects.size();
-	int offset = 0;
+	isRelease = true;
+	int index = 0;
 
-	for (int i = 0; i < size; i++)
+	while (!currentObjects.empty())
 	{
-		curSceneObjects.erase(curSceneObjects.begin() + i);
-		delete curSceneObjects[i];
+		delete currentObjects[0];
+		currentObjects.erase(currentObjects.begin());
 	}
 }
 
 void GameScene::Draw()
 {
+	if (isRelease) return;
+
+	gotoxy(0, 0);
+	cout << "SCORE: " << Player::GetScore() << endl;
 	gotoxy(0, 10);
 
 	for (int y = 0; y < MAX_Y; y++)
@@ -85,42 +101,42 @@ void GameScene::Draw()
 				cout << "  ";
 				break;
 
-			case PLAYER:
-				setcolor(YELLOW, SKYBLUE);
-				cout << "б▄";
-				break;
-
-			case COLUMN:
-				setcolor(GREEN, SKYBLUE);
-				cout << "бс";
-				break;
-
 			case FLOOR:
 				setcolor(BLACK, SKYBLUE);
 				cout << "бу";
 				break;
+
+			default:
+				(WHITE, SKYBLUE);
+				cout << "  ";
 			}
 		}
-
-		setcolor(WHITE, BLACK);
 		cout << endl;
+	}
+
+	for (int i = 0; i < currentObjects.size(); i++)
+	{
+		currentObjects[i]->Render(0, 10);
 	}
 }
 
 void GameScene::DeleteObject()
 {
-	for (int i = 0; i < curSceneObjects.size(); i++)
+	if (isRelease)return;
+
+	for (int i = 0; i < currentObjects.size(); i++)
 	{
-		Object* obj = curSceneObjects[i];
+		if (isRelease || i < 0)return;
 
-		if (obj->GetIsDead())
+		Object* obj = currentObjects[i];
+
+		if (obj)
 		{
-			curSceneObjects.erase(curSceneObjects.begin() + i);
+			if (!obj->GetIsDead()) continue;
 
-			POSITION pos = obj->GetPosition();
-
+			currentObjects.erase(currentObjects.begin() + i);
 			delete obj;
-
+			obj = nullptr;
 			i--;
 		}
 	}
