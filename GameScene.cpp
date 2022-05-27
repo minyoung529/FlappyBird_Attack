@@ -86,9 +86,15 @@ void GameScene::Draw()
 {
 	if (isRelease) return;
 
-	gotoxy(0, 0);
-	cout << "SCORE: " << Player::GetScore() << endl;
-	gotoxy(0, 10);
+	int offsetX = 35;
+	int offsetY = 10;
+	gotoxy(offsetX, offsetY - 3);
+	cout << "| HIGHSCORE: " << Player::GetHighScore() << endl;
+	gotoxy(offsetX, offsetY - 2);
+	cout << "| SCORE: " << Player::GetScore() << endl;
+
+
+	gotoxy(offsetX, offsetY);
 
 	for (int y = 0; y < MAX_Y; y++)
 	{
@@ -112,11 +118,12 @@ void GameScene::Draw()
 			}
 		}
 		cout << endl;
+		gotoxy(offsetX, offsetY + y);
 	}
 
 	for (int i = 0; i < currentObjects.size(); i++)
 	{
-		currentObjects[i]->Render(0, 10);
+		currentObjects[i]->Render(offsetX, offsetY);
 	}
 }
 

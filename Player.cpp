@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 
 int Player::score = 0;
+int Player::highScore = 0;
 
 Player::Player() : Object({}, PLAYER)
 {

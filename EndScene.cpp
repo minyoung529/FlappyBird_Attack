@@ -1,8 +1,9 @@
-#include "EndScene.h"
+ï»¿#include "EndScene.h"
 #include "Core.h"
 #include "GameScene.h"
 #include "SceneManager.h"
 #include "console.h"
+#include "Player.h"
 using namespace std;
 
 EndScene::EndScene()
@@ -16,8 +17,37 @@ EndScene::~EndScene()
 void EndScene::Init()
 {
 	system("cls");
-	cout << "°ÔÀÓ ¿À¹ö~~~~" << endl;
-	cout << "´Ù½Ã ÇÏ·Á¸é SPACE Å°¸¦ ´©¸£½Ã¿À~~" << endl;
+	if (Player::GetScore() > Player::GetHighScore())
+	{
+		Player::UpdateHighScore();
+
+		cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+		cout << "|c|o|n|g|r|a|t|u|l|a|t|i|o|n|s|!|" << endl;
+		cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+		cout << endl;
+
+		cout << "ì¶•í•˜í•©ë‹ˆë‹¤! ìµœê³ ê¸°ë¡ ê°±ì‹ !";
+	}
+	else
+	{
+		cout << "########    ###    #### ##                   " << endl;
+		cout << "##         ## ##    ##  ##                   " << endl;
+		cout << "##        ##   ##   ##  ##                   " << endl;
+		cout << "######   ##     ##  ##  ##                   " << endl;
+		cout << "##       #########  ##  ##                   " << endl;
+		cout << "##       ##     ##  ##  ##       ### ### ### " << endl;
+		cout << "##       ##     ## #### ######## ### ### ### " << endl;
+		cout << endl;
+
+		cout << "ë‹¤ìŒì—ëŠ” ìµœê³  ê¸°ë¡ì„ ê°±ì‹ í•´ë³´ì„¸ìš”~" << endl;
+	}
+
+	cout << endl;
+	cout << "SCORE: " << Player::GetScore() << endl;
+	cout << "HIGH_SCORE: " << Player::GetHighScore() << endl;
+
+	cout << endl << endl << endl << endl;
+	cout << "ë‹¤ì‹œ í•˜ë ¤ë©´ SPACE í‚¤ë¥¼ ëˆ„ë¥´ì„¸ìš”..." << endl;
 }
 
 void EndScene::Update()
