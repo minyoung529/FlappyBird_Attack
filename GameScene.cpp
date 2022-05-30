@@ -20,11 +20,11 @@ void GameScene::Init()
 		{
 			if (y == MAX_Y - 1)
 			{
-				map[y][x] = FLOOR;
+				map[y][x] = BLOCK_TYPE::FLOOR;
 				continue;
 			}
 
-			map[y][x] = EMPTY;
+			map[y][x] = BLOCK_TYPE::EMPTY;
 		}
 	}
 
@@ -48,7 +48,7 @@ void GameScene::Update()
 		if (currentObjects.empty() || i >= currentObjects.size())continue;
 
 		POSITION pos = currentObjects[i]->GetPosition();
-		currentObjects[i]->Update(map[pos.y][pos.x]);
+		currentObjects[i]->Update(map);
 
 		if (isRelease || currentObjects.empty() || i >= currentObjects.size())
 		{
@@ -56,7 +56,7 @@ void GameScene::Update()
 		}
 
 		if (IN_SCREEN(pos.x, pos.y))
-			map[pos.y][pos.x] = EMPTY;
+			map[pos.y][pos.x] = BLOCK_TYPE::EMPTY;
 
 		pos = currentObjects[i]->GetPosition();
 
@@ -78,6 +78,7 @@ void GameScene::ReleaseScene()
 	while (!currentObjects.empty())
 	{
 		delete currentObjects[0];
+		currentObjects[0] = nullptr;
 		currentObjects.erase(currentObjects.begin());
 	}
 }
@@ -102,12 +103,12 @@ void GameScene::Draw()
 		{
 			switch (map[y][x])
 			{
-			case EMPTY:
+			case BLOCK_TYPE::EMPTY:
 				setcolor(WHITE, SKYBLUE);
 				cout << "  ";
 				break;
 
-			case FLOOR:
+			case BLOCK_TYPE::FLOOR:
 				setcolor(BLACK, SKYBLUE);
 				cout << "бу";
 				break;

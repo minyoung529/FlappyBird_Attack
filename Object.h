@@ -4,17 +4,17 @@
 class Object
 {
 public:
-	Object() :position{}, objectType(EMPTY), isDead(false), color(WHITE){}
+	Object() :position{}, objectType(BLOCK_TYPE::EMPTY), isDead(false), color(WHITE){}
 
-	Object(POSITION position) : position(position), objectType(EMPTY), isDead(false), color(WHITE) {}
+	Object(POSITION position) : position(position), objectType(BLOCK_TYPE::EMPTY), isDead(false), color(WHITE) {}
 
-	Object(POSITION position, char objectType)
+	Object(POSITION position, BLOCK_TYPE objectType)
 		: position(position)
 		, objectType(objectType)
 		, isDead(false)
 		, color(WHITE) {}
 
-	Object(POSITION position, char objectType, int color)
+	Object(POSITION position, BLOCK_TYPE objectType, int color)
 		: position(position)
 		, objectType(objectType)
 		, isDead(false)
@@ -25,17 +25,17 @@ public:
 
 public:
 	virtual void Init() = 0;
-	virtual void Update(char posOnBoard) = 0;
+	virtual void Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X]) = 0;
 	virtual void Render(int offsetX, int offsetY) = 0;
 
 public:
 	POSITION GetPosition() { return position; }
-	char GetObjectType() { return objectType; }
+	BLOCK_TYPE GetObjectType() { return objectType; }
 	bool GetIsDead() { return isDead; }
 
 protected:
 	POSITION position;
-	char objectType;
+	BLOCK_TYPE objectType;
 	bool isDead = false;
 	int color;
 };

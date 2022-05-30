@@ -4,13 +4,13 @@
 #include "console.h"
 
 ColumnBlock::ColumnBlock()
-	: Object({}, COLUMN)
+	: Object({}, BLOCK_TYPE::COLUMN)
 	, isScorePlus(false)
 {
 }
 
 ColumnBlock::ColumnBlock(POSITION position)
-	: Object(position, COLUMN)
+	: Object(position, BLOCK_TYPE::COLUMN)
 	, isScorePlus(false)
 {
 }
@@ -23,7 +23,7 @@ void ColumnBlock::Init()
 {
 }
 
-void ColumnBlock::Update(char posOnBoard)
+void ColumnBlock::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 {
 	position.x -= 1;
 

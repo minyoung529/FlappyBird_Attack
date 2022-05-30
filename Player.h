@@ -1,5 +1,10 @@
 #pragma once
 #include "Object.h"
+#include <vector>
+using namespace std;
+
+class Bullet;
+
 class Player : public Object
 {
 public:
@@ -9,7 +14,7 @@ public:
 
 public:
 	virtual void Init();
-	virtual void Update(char posOnBoard);
+	virtual void Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X]);
 	virtual void Render(int offsetX, int offsetY);
 
 public:
@@ -19,7 +24,9 @@ public:
 	static void UpdateHighScore() { highScore = score; }
 
 private:
-	void CheckDead(char posOnBoard);
+	void CheckDead(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X]);
+	void DeleteObject();
 	static int score;
 	static int highScore;
+	vector<Bullet*> bullets;
 };

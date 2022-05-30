@@ -8,14 +8,25 @@ typedef struct position
 	int y;
 }POSITION, LPOSITION;
 
-#define	EMPTY		'0'
-#define	PLAYER		'1'
-#define	COLUMN		'2'
-#define	SLOW		'3'
-#define	GRAVITY		'4'
-#define	BULLET		'5'
-#define	POWERUP		'6'
-#define	FLOOR		'7'
+enum class BLOCK_TYPE
+{
+	EMPTY	= 0,
+	PLAYER	,
+	COLUMN	,
+	SLOW	,
+	GRAVITY	,
+	BULLET	,
+	POWERUP	,
+	FLOOR		
+};
+//#define	EMPTY		0
+//#define	PLAYER		'1'
+//#define	COLUMN		'2'
+//#define	SLOW		'3'
+//#define	GRAVITY		'4'
+//#define	BULLET		'5'
+//#define	POWERUP		'6'
+//#define	FLOOR		'7'
 
 #define BLACK		0
 #define WHITE		15

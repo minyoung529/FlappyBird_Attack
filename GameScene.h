@@ -20,7 +20,7 @@ public:
 	virtual void ReleaseScene();
 
 public:
-	char GetPosition(POSITION position)
+	BLOCK_TYPE GetPosition(POSITION position)
 	{
 		return map[position.y][position.x];
 	}
@@ -32,7 +32,7 @@ private:
 	void DeleteObject();
 
 private:
-	int map[MAX_Y][MAX_X] = {EMPTY, };
+	BLOCK_TYPE map[MAX_Y][MAX_X] = { BLOCK_TYPE::EMPTY, };
 	Player* player;
 	vector<Object*> currentObjects;
 	bool isRelease = false;

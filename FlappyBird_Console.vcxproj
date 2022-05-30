@@ -139,23 +139,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Column.cpp" />
     <ClCompile Include="ColumnBlock.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Column.h" />
     <ClInclude Include="ColumnBlock.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
