@@ -7,6 +7,7 @@ using namespace std;
 
 class Player;
 class Object;
+class Monster;
 
 class GameScene : public Scene
 {
@@ -34,6 +35,7 @@ private:
 private:
 	BLOCK_TYPE map[MAX_Y][MAX_X] = { BLOCK_TYPE::EMPTY, };
 	Player* player;
+	Monster* monster;
 	vector<Object*> currentObjects;
 	bool isRelease = false;
 };

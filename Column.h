@@ -3,6 +3,6 @@
 using namespace std;
 
 class Object;
-#define	OPEN_COUNT	3
+#define	OPEN_COUNT	5
 
 void GenerateColumn(vector<Object*>& objects);

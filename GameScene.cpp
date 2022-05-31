@@ -1,6 +1,8 @@
 #include "GameScene.h"
 #include "Player.h"
 #include "console.h"
+#include "Item.h"
+#include "Monster.h"
 
 GameScene::GameScene()
 	: player(nullptr)
@@ -28,19 +30,29 @@ void GameScene::Init()
 		}
 	}
 
+	POSITION pos = { MAX_X - 2, MAX_Y / 2 - 1 };
+	monster = new Monster(pos);
 	player = new Player({ PLAYER_X, MAX_Y / 2 });
+	currentObjects.push_back(monster);
 	currentObjects.push_back(player);
 }
-
 
 void GameScene::Update()
 {
 	if (isRelease) return;
 
-	if (updateTime % 10 == 0)
+	if (updateTime % 15 == 0)
 	{
+		Item* item = new Item({MAX_X, rand() % MAX_Y },
+			(ITEM_TYPE)(rand() % (int)ITEM_TYPE::COUNT));
+		currentObjects.push_back(item);
+
 		GenerateColumn(currentObjects);
 	}
+
+	POSITION pos = { MAX_X - 2, MAX_Y / 2 - 1 };
+
+	map[pos.y + 1][pos.x] = BLOCK_TYPE::MONSTER;
 
 	for (int i = 0; i < currentObjects.size(); i++)
 	{
@@ -87,15 +99,12 @@ void GameScene::Draw()
 {
 	if (isRelease) return;
 
-	int offsetX = 35;
-	int offsetY = 10;
-	gotoxy(offsetX, offsetY - 3);
+	gotoxy(OFFSET_X, OFFSET_Y - 3);
 	cout << "| HIGHSCORE: " << Player::GetHighScore() << endl;
-	gotoxy(offsetX, offsetY - 2);
+	gotoxy(OFFSET_X, OFFSET_Y - 2);
 	cout << "| SCORE: " << Player::GetScore() << endl;
 
-
-	gotoxy(offsetX, offsetY);
+	gotoxy(OFFSET_X, OFFSET_Y);
 
 	for (int y = 0; y < MAX_Y; y++)
 	{
@@ -105,7 +114,15 @@ void GameScene::Draw()
 			{
 			case BLOCK_TYPE::EMPTY:
 				setcolor(WHITE, SKYBLUE);
-				cout << "  ";
+				if (x % 2 == 0)
+				{
+					if (y % 2 == 0)
+						cout << "* ";
+					else
+						cout << " *";
+				}
+				else
+					cout << "  ";
 				break;
 
 			case BLOCK_TYPE::FLOOR:
@@ -119,12 +136,12 @@ void GameScene::Draw()
 			}
 		}
 		cout << endl;
-		gotoxy(offsetX, offsetY + y);
+		gotoxy(OFFSET_X, OFFSET_Y + y);
 	}
 
 	for (int i = 0; i < currentObjects.size(); i++)
 	{
-		currentObjects[i]->Render(offsetX, offsetY);
+		currentObjects[i]->Render(OFFSET_X, OFFSET_Y);
 	}
 }
 

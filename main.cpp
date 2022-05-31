@@ -2,6 +2,7 @@
 #include "GameScene.h"
 #include "SceneManager.h"
 #include "Core.h"
+#include "console.h"
 using namespace std;
 
 int main()
@@ -10,6 +11,8 @@ int main()
 	Scene* gameScene = new GameScene();
 
 	SceneManager::sceneManager->SetCurrentScene(gameScene);
+
+	cursorview();
 
 	while (true)
 	{

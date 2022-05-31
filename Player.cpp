@@ -34,14 +34,19 @@ void Player::Init()
 
 void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 {
+	CheckDead(posOnBoard);
+
 	if ((GetAsyncKeyState(VK_SPACE) & 0x8001) != 0)
 	{
-		position.y -= 2;
+		if (position.y >= 1)
+		{
+			position.y -= 2;
+		}
 	}
 	else
 	{
-		if (position.y >= MAX_Y - 1) return;
-		position.y += 1;
+		if (position.y < MAX_Y)
+			position.y += 1;
 	}
 
 	if ((GetAsyncKeyState(VK_LSHIFT) & 0x8001) != 0)
@@ -61,6 +66,8 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 			bullets[i]->Update(posOnBoard);
 		}
 	}
+
+	DeleteObject();
 }
 
 void Player::Render(int offsetX, int offsetY)
@@ -72,17 +79,21 @@ void Player::Render(int offsetX, int offsetY)
 
 	for (int i = 0; i < bullets.size(); i++)
 	{
+		if (bullets[i]->GetIsDead())continue;
 		bullets[i]->Render(offsetX, offsetY);
 	}
+
+	setcolor(WHITE, BLACK);
 }
 
 void Player::CheckDead(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 {
 	if (isDead) return;
 
-	if (position.y == MAX_Y - 1 || posOnBoard[position.y][position.x] == BLOCK_TYPE::COLUMN)
+	if (position.y == MAX_Y - 2 || posOnBoard[position.y][position.x] == BLOCK_TYPE::COLUMN)
 	{
 		isDead = true;
+		Render(OFFSET_X, OFFSET_Y);
 		SceneManager::sceneManager->SetCurrentScene(new EndScene());
 	}
 }

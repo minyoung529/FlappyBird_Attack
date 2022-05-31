@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "Player.h"
 #include "console.h"
 #include "Core.h"
 
@@ -6,7 +7,7 @@ Bullet::Bullet() : Object({ PLAYER_X + 1, 0 })
 {
 }
 
-Bullet::Bullet(POSITION position) : Object({position.x + 1, position.y})
+Bullet::Bullet(POSITION position) : Object({ position.x + 1, position.y })
 {
 }
 
@@ -20,14 +21,17 @@ void Bullet::Init()
 
 void Bullet::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 {
-	position.x += 1;
+	if (isDead)return;
 
-	if (position.x >= MAX_X)
+	if (posOnBoard[position.y][position.x] == BLOCK_TYPE::MONSTER)
 	{
+		Player::AddScore(3);
 		isDead = true;
 	}
 
-	else if (posOnBoard[position.x][position.y] == BLOCK_TYPE::COLUMN)
+	position.x += 1;
+
+	if (position.x >= MAX_X - 1)
 	{
 		isDead = true;
 	}

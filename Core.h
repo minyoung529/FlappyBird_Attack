@@ -10,30 +10,38 @@ typedef struct position
 
 enum class BLOCK_TYPE
 {
-	EMPTY	= 0,
+	EMPTY	,
 	PLAYER	,
 	COLUMN	,
 	SLOW	,
 	GRAVITY	,
 	BULLET	,
 	POWERUP	,
-	FLOOR		
+	FLOOR	,
+	MONSTER
 };
-//#define	EMPTY		0
-//#define	PLAYER		'1'
-//#define	COLUMN		'2'
-//#define	SLOW		'3'
-//#define	GRAVITY		'4'
-//#define	BULLET		'5'
-//#define	POWERUP		'6'
-//#define	FLOOR		'7'
+
+enum class ITEM_TYPE
+{
+	NONE	,
+	SLOW	,
+	BULLETS ,
+	POWERUP ,
+	GRAVITY ,
+	COUNT
+};
+
 
 #define BLACK		0
 #define WHITE		15
 #define YELLOW		14
 #define SKYBLUE		3
 #define GREEN		10
+#define RED			12
 
 #define PLAYER_X	2
 
 #define IN_SCREEN(x,y)	x >= 0 && x < MAX_X && y >= 0 && y < MAX_Y
+
+#define OFFSET_X	35
+#define OFFSET_Y	10
