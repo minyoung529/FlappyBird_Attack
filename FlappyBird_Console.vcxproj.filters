@@ -19,6 +19,9 @@
     <Filter Include="Object">
       <UniqueIdentifier>{22dc3a94-1149-4b7f-8fa7-b0db31c8f113}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{9d47e595-5ad4-4855-b5e9-8ccaddc266c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,11 +54,14 @@
     <ClCompile Include="Monster.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="console.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Slow.cpp">
+      <Filter>Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +102,10 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>Object</Filter>
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Slow.h">
+      <Filter>Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

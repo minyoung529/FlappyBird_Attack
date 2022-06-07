@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "Core.h"
 
 class SceneManager
 {
@@ -27,7 +28,12 @@ public:
 
 private:
 	Scene* curScene;
+	long timeScale = 250;
 public:
 	static SceneManager* sceneManager;
+
+public:
+	void SetTimeScale(long  t) { timeScale = t; }
+	long GetTimeScale() { return timeScale; }
 };
 

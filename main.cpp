@@ -17,7 +17,7 @@ int main()
 	while (true)
 	{
 		SceneManager::sceneManager->Update();
-		Sleep(250);
+		Sleep(SceneManager::sceneManager->GetTimeScale());
 	}
 
 	SceneManager::sceneManager->Release();

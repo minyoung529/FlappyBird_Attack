@@ -25,8 +25,7 @@ void cursorview()
 {
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO info;
-	info.bVisible=false;
+	info.bVisible = false;
 	info.dwSize = 1;
 	SetConsoleCursorInfo(hOut, &info);
 }
-
