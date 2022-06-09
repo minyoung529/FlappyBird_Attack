@@ -63,6 +63,15 @@
     <ClCompile Include="Slow.cpp">
       <Filter>Item</Filter>
     </ClCompile>
+    <ClCompile Include="Gravity.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUp.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -106,6 +115,15 @@
     </ClInclude>
     <ClInclude Include="Slow.h">
       <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUp.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

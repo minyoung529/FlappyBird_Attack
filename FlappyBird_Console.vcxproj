@@ -139,21 +139,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Column.cpp" />
     <ClCompile Include="ColumnBlock.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Slow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Column.h" />
     <ClInclude Include="ColumnBlock.h" />
@@ -161,10 +165,12 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Gravity.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Slow.h" />

@@ -1,15 +1,18 @@
 #pragma once
 #include "Item.h"
 
-class Slow : public Item
+class Gravity : public Item
 {
 public:
-	Slow();
-	Slow(POSITION position);
-	virtual ~Slow();
+	Gravity();
+	Gravity(POSITION position);
+	virtual ~Gravity();
 
 public:
 	virtual void Init();
 	virtual void Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X]);
 	virtual void Render(int offsetX, int offsetY);
+	
+private:
+	void SetPlayerGravity(bool isGravity);
 };

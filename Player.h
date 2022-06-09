@@ -23,10 +23,24 @@ public:
 	static int GetHighScore() { return highScore; }
 	static void UpdateHighScore() { highScore = score; }
 
+	void SetIsReverseGravity(bool isRV) { isReverseGravity = isRV; }
+	bool GetIsReverseGravity() { return isReverseGravity; }
+	void SetIsStrong(bool isSt) { isStrong = isSt; }
+	//bool GetIsReverseGravity() { return isReverseGravity; }
+
+
 private:
 	void CheckDead(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X]);
 	void DeleteObject();
+
+private:
 	static int score;
 	static int highScore;
 	vector<Bullet*> bullets;
+
+#pragma region Item
+	bool isReverseGravity;
+	bool isStrong;
+#pragma endregion
+
 };

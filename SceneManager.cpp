@@ -12,6 +12,8 @@ SceneManager::SceneManager() : curScene(nullptr)
 
 SceneManager::~SceneManager()
 {
+	delete curScene;
+	delete sceneManager;
 }
 
 void SceneManager::SetCurrentScene(Scene* scene)

@@ -17,34 +17,54 @@ EndScene::~EndScene()
 void EndScene::Init()
 {
 	system("cls");
+
+	gotoxy(OFFSET_X, OFFSET_Y);
+
 	if (Player::GetScore() > Player::GetHighScore())
 	{
 		Player::UpdateHighScore();
 
-		cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
-		cout << "|c|o|n|g|r|a|t|u|l|a|t|i|o|n|s|!|" << endl;
-		cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
-		cout << endl;
+		string str[] =
+		{
+			"+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" ,
+			"|c|o|n|g|r|a|t|u|l|a|t|i|o|n|s|!|" ,
+			"+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+			"\n",
+			"축하합니다! 최고기록 갱신"
+		};
 
-		cout << "축하합니다! 최고기록 갱신!";
+		for (int i = 1; i <= 5; i++)
+		{
+			cout << str[i - 1];
+			gotoxy(OFFSET_X, OFFSET_Y + i);
+		}
 	}
 	else
 	{
-		cout << "########    ###    #### ##                   " << endl;
-		cout << "##         ## ##    ##  ##                   " << endl;
-		cout << "##        ##   ##   ##  ##                   " << endl;
-		cout << "######   ##     ##  ##  ##                   " << endl;
-		cout << "##       #########  ##  ##                   " << endl;
-		cout << "##       ##     ##  ##  ##       ### ### ### " << endl;
-		cout << "##       ##     ## #### ######## ### ### ### " << endl;
-		cout << endl;
+		string str[] =
+		{
+			"########    ###    #### ##                   ",
+			"##         ## ##    ##  ##                   ",
+			"##        ##   ##   ##  ##                   ",
+			"######   ##     ##  ##  ##                   ",
+			"##       #########  ##  ##                   ",
+			"##       ##     ##  ##  ##       ### ### ### ",
+			"##       ##     ## #### ######## ### ### ### ",
+			"\n",
+			"다음에는 최고 기록을 갱신해보세요~"
+		};
 
-		cout << "다음에는 최고 기록을 갱신해보세요~" << endl;
+		for (int i = 1; i <= 9; i++)
+		{
+			cout << str[i - 1];
+			gotoxy(OFFSET_X, OFFSET_Y + i);
+		}
 	}
 
-	cout << endl;
-	cout << "SCORE: " << Player::GetScore() << endl;
-	cout << "HIGH_SCORE: " << Player::GetHighScore() << endl;
+
+	cout << endl << endl << endl;
+	cout << "	| SCORE: " << Player::GetScore() << endl;
+	cout << "	| HIGH_SCORE: " << Player::GetHighScore() << endl;
 
 	cout << endl << endl << endl << endl;
 	cout << "다시 하려면 SPACE 키를 누르세요..." << endl;

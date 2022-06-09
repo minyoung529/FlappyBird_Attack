@@ -3,6 +3,7 @@
 #include "console.h"
 #include "Item.h"
 #include "Monster.h"
+#include "Background.h"
 
 GameScene::GameScene()
 	: player(nullptr)
@@ -44,7 +45,7 @@ void GameScene::Update()
 	if (updateTime % 15 == 0)
 	{
 		Item* item = new Item({ MAX_X, /*rand() % (MAX_Y - 1)*/3 },
-			(ITEM_TYPE)(/*rand() % (int)ITEM_TYPE::COUNT*/ITEM_TYPE::SLOW));
+			(ITEM_TYPE)(/*rand() % (int)ITEM_TYPE::COUNT*/ITEM_TYPE::GRAVITY));
 		currentObjects.push_back(item);
 
 		GenerateColumn(currentObjects);
@@ -95,14 +96,44 @@ void GameScene::ReleaseScene()
 	}
 }
 
+Object* GameScene::FindObjectOfType(BLOCK_TYPE type)
+{
+	for (Object* obj : currentObjects)
+	{
+		if (obj->GetObjectType() == type)
+			return obj;
+	}
+}
+
+vector<Object*> GameScene::FindObjectsOfType(BLOCK_TYPE type)
+{
+	vector<Object*> objs;
+	for (Object* obj : currentObjects)
+	{
+		if (obj->GetObjectType() == type)
+		{
+			objs.push_back(obj);
+		}
+	}
+
+	return objs;
+}
+
 void GameScene::Draw()
 {
 	if (isRelease) return;
 
+	setcolor(BLACK, RED);
 	gotoxy(OFFSET_X, OFFSET_Y - 3);
-	cout << "| HIGHSCORE: " << Player::GetHighScore() << endl;
+	cout << "¢º HIGHSCORE: " << Player::GetHighScore() << endl;
+
+	setcolor(BLACK, GREEN);
 	gotoxy(OFFSET_X, OFFSET_Y - 2);
-	cout << "| SCORE: " << Player::GetScore() << endl;
+	cout << "¢º SCORE: " << Player::GetScore() << endl;
+
+	DrawFrame();
+
+	int bgColor = (player->GetIsReverseGravity()) ? BLACK : SKYBLUE;
 
 	gotoxy(OFFSET_X, OFFSET_Y);
 
@@ -113,7 +144,8 @@ void GameScene::Draw()
 			switch (map[y][x])
 			{
 			case BLOCK_TYPE::EMPTY:
-				setcolor(WHITE, SKYBLUE);
+
+				setcolor(WHITE, bgColor);
 				if (x % 2 == 0)
 				{
 					if (y % 2 == 0)
@@ -126,12 +158,12 @@ void GameScene::Draw()
 				break;
 
 			case BLOCK_TYPE::FLOOR:
-				setcolor(BLACK, SKYBLUE);
+				setcolor(BLACK, bgColor);
 				cout << "¡ã";
 				break;
 
 			default:
-				(WHITE, SKYBLUE);
+				(WHITE, bgColor);
 				cout << "  ";
 			}
 		}

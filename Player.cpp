@@ -38,20 +38,28 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 
 	if ((GetAsyncKeyState(VK_SPACE) & 0x8001) != 0)
 	{
-		if (position.y >= 1)
+		if (!isReverseGravity)
 		{
 			position.y -= 2;
+		}
+
+		if (isReverseGravity)
+		{
+			position.y += 2;
 		}
 	}
 	else
 	{
-		if (position.y < MAX_Y)
+		if (!isReverseGravity)
 			position.y += 1;
+		else
+			position.y -= 1;
 	}
 
 	if ((GetAsyncKeyState(VK_LSHIFT) & 0x8001) != 0)
 	{
-		Bullet* newBullet = new Bullet(position);
+		int damage = (isStrong) ? 5 : 3;
+		Bullet* newBullet = new Bullet(position, damage);
 		bullets.push_back(newBullet);
 	}
 
@@ -73,7 +81,9 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 void Player::Render(int offsetX, int offsetY)
 {
 	gotoxy(position.x * 2 + offsetX, position.y + offsetY);
-	setcolor(YELLOW, SKYBLUE);
+
+	int bgColor = (isReverseGravity) ? BLACK : SKYBLUE;
+	setcolor(YELLOW, bgColor);
 
 	cout << "¡Ú";
 
@@ -90,7 +100,8 @@ void Player::CheckDead(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 {
 	if (isDead) return;
 
-	if (position.y == MAX_Y - 2 || posOnBoard[position.y][position.x] == BLOCK_TYPE::COLUMN)
+	if (position.y >= MAX_Y - 2 || posOnBoard[position.y][position.x] == BLOCK_TYPE::COLUMN ||
+		position.y < 0)
 	{
 		isDead = true;
 		Render(OFFSET_X, OFFSET_Y);

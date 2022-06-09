@@ -27,6 +27,8 @@ public:
 	}
 
 public:
+	Object* FindObjectOfType(BLOCK_TYPE type);
+	vector<Object*> FindObjectsOfType(BLOCK_TYPE type);
 
 private:
 	void Draw();

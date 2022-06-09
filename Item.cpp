@@ -1,7 +1,10 @@
 #include "Item.h"
 #include "console.h"
 #include "Player.h"
+
 #include "Slow.h"
+#include "Gravity.h"
+#include "PowerUp.h"
 
 Item::Item() : itemType(ITEM_TYPE::NONE)
 {
@@ -23,10 +26,8 @@ Item::Item(POSITION position, ITEM_TYPE itemType) : itemType(itemType)
 
 Item::~Item()
 {
+	if (item) delete item;
 	item = nullptr;
-	item->Reset();
-	if (item)
-		delete item;
 }
 
 void Item::Init()
@@ -58,15 +59,14 @@ void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 			break;
 
 		case ITEM_TYPE::BULLETS:
-			cout << "¢À";
 			break;
 
 		case ITEM_TYPE::GRAVITY:
-			cout << "¡à";
+			item = new Gravity();
 			break;
 
 		case ITEM_TYPE::POWERUP:
-			cout << "¢Ý";
+			item = new PowerUp();
 			break;
 		}
 

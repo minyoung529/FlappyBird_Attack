@@ -13,7 +13,6 @@ public:
 	virtual void Init();
 	virtual void Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X]);
 	virtual void Render(int offsetX, int offsetY);
-	virtual void Reset();
 
 private:
 	ITEM_TYPE itemType;
