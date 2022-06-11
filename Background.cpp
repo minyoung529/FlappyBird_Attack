@@ -1,5 +1,6 @@
 #include "Background.h"
 #include "console.h"
+#include "Core.h"
 #include <math.h>
 
 void DrawFrame()
@@ -27,19 +28,6 @@ void DrawFrame()
 		cout << "l";
 	}
 
-	int distance = 8;
-	int start = -8;
-
-	for (int i = start, count = 0; i < start + distance * 4; i += distance, count++)
-	{
-		if (count % 2 == 0)
-			DrawCrossButton(OFFSET_X + i, OFFSET_Y + FRAME_SIZE_Y - 1);
-		else
-			DrawCrossButton(OFFSET_X + i, OFFSET_Y + FRAME_SIZE_Y - 2);
-	}
-
-	DrawJoyStick(OFFSET_X + MAX_X * 2, OFFSET_Y + FRAME_SIZE_Y - 1, RED);
-	DrawJoyStick(OFFSET_X + MAX_X * 2 + 10, OFFSET_Y + FRAME_SIZE_Y - 1, SKYBLUE);
 }
 
 void DrawCrossButton(int x, int y)
@@ -85,4 +73,21 @@ void DrawJoyStick(int x, int y, int color)
 
 	gotoxy(x - 7, y - 4);
 	cout << "бс";
+}
+
+void DrawSticksAndButtons()
+{
+	int distance = 8;
+	int start = -8;
+
+	for (int i = start, count = 0; i < start + distance * 4; i += distance, count++)
+	{
+		if (count % 2 == 0)
+			DrawCrossButton(OFFSET_X + i, OFFSET_Y + FRAME_SIZE_Y - 1);
+		else
+			DrawCrossButton(OFFSET_X + i, OFFSET_Y + FRAME_SIZE_Y - 2);
+	}
+
+	DrawJoyStick(OFFSET_X + MAX_X * 2, OFFSET_Y + FRAME_SIZE_Y - 1, RED);
+	DrawJoyStick(OFFSET_X + MAX_X * 2 + 10, OFFSET_Y + FRAME_SIZE_Y - 1, SKYBLUE);
 }

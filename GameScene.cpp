@@ -33,9 +33,14 @@ void GameScene::Init()
 
 	POSITION pos = { MAX_X - 2, MAX_Y / 2 - 1 };
 	monster = new Monster(pos);
-	player = new Player({ PLAYER_X, MAX_Y / 2 });
+	player = new Player({ PLAYER_X, MAX_Y / 2 - 3 });
 	currentObjects.push_back(monster);
 	currentObjects.push_back(player);
+
+	setcolor(WHITE, BLACK);
+
+	DrawFrame();
+	DrawSticksAndButtons();
 }
 
 void GameScene::Update()
@@ -131,7 +136,6 @@ void GameScene::Draw()
 	gotoxy(OFFSET_X, OFFSET_Y - 2);
 	cout << "¢º SCORE: " << Player::GetScore() << endl;
 
-	DrawFrame();
 
 	int bgColor = (player->GetIsReverseGravity()) ? BLACK : SKYBLUE;
 

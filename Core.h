@@ -43,5 +43,8 @@ enum class ITEM_TYPE
 
 #define IN_SCREEN(x,y)	x >= 0 && x < MAX_X && y >= 0 && y < MAX_Y
 
-#define OFFSET_X	35
-#define OFFSET_Y	10
+#define OFFSET_X	75
+#define OFFSET_Y	20
+
+#define	FRAME_SIZE_X	MAX_X+8
+#define	FRAME_SIZE_Y	MAX_Y+6

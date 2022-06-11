@@ -1,4 +1,5 @@
 #include "SceneManager.h"
+#include "console.h"
 
 SceneManager* SceneManager::sceneManager = nullptr;
 
@@ -18,6 +19,9 @@ SceneManager::~SceneManager()
 
 void SceneManager::SetCurrentScene(Scene* scene)
 {
+	setcolor(WHITE, BLACK);
+	system("cls");
+
 	if (curScene)
 	{
 		curScene->ReleaseScene();
@@ -26,5 +30,7 @@ void SceneManager::SetCurrentScene(Scene* scene)
 	}
 
 	curScene = scene;
-	curScene->Init();
+
+	if (curScene)
+		curScene->Init();
 }

@@ -72,6 +72,12 @@
     <ClCompile Include="Background.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -124,6 +130,12 @@
     </ClInclude>
     <ClInclude Include="Background.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
