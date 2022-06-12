@@ -50,7 +50,7 @@ void GameScene::Update()
 	if (updateTime % 15 == 0)
 	{
 		Item* item = new Item({ MAX_X, /*rand() % (MAX_Y - 1)*/3 },
-			(ITEM_TYPE)(/*rand() % (int)ITEM_TYPE::COUNT*/ITEM_TYPE::GRAVITY));
+			(ITEM_TYPE)(/*rand() % */(int)ITEM_TYPE::GRAVITY));
 		currentObjects.push_back(item);
 
 		GenerateColumn(currentObjects);

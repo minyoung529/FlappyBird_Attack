@@ -6,6 +6,8 @@
 #include "Gravity.h"
 #include "PowerUp.h"
 
+#include <mmsystem.h>
+
 Item::Item() : itemType(ITEM_TYPE::NONE)
 {
 	position = { };
@@ -56,17 +58,20 @@ void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 		{
 		case ITEM_TYPE::SLOW:
 			item = new Slow();
+			PlaySound(MAKEINTRESOURCE(SLOW_ITEM), NULL, SND_RESOURCE | SND_ASYNC);
 			break;
 
 		case ITEM_TYPE::BULLETS:
 			break;
 
 		case ITEM_TYPE::GRAVITY:
+			PlaySound(MAKEINTRESOURCE(GRAVITY_ITEM), NULL, SND_RESOURCE | SND_ASYNC);
 			item = new Gravity();
 			break;
 
 		case ITEM_TYPE::POWERUP:
 			item = new PowerUp();
+			PlaySound(MAKEINTRESOURCE(POWER), NULL, SND_RESOURCE | SND_ASYNC);
 			break;
 		}
 

@@ -137,5 +137,36 @@
     <ClInclude Include="HelpScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FlappyBird_Console.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Data\Jump.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Data\Shoot.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Data\PowerUp.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Data\Slow.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Data\Gravity.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Data\BGM.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -7,6 +7,8 @@
 #include "HelpScene.h"
 #include "Background.h"
 #include "GameScene.h"
+#include "resource.h"
+#include <mmsystem.h>
 
 StartScene::StartScene()
 {
@@ -19,6 +21,8 @@ StartScene::~StartScene()
 void StartScene::Init()
 {
 	setcolor(YELLOW, SKYBLUE);
+	PlaySound(MAKEINTRESOURCE(BGM), NULL, SND_RESOURCE | SND_ASYNC);
+
 	system("cls");
 }
 
@@ -81,13 +85,13 @@ void StartScene::RenderButton()
 	_setmode(_fileno(stdout), _O_TEXT);
 
 	setcolor(BLACK, GREEN);
-	GetButton("Play", "Space", OFFSET_Y);
+	GetButton("Play", "Space", OFFSET_Y + 7);
 
 	setcolor(WHITE, RED);
-	GetButton("Help", "H", OFFSET_Y + 5);
+	GetButton("Help", "H", OFFSET_Y + 12);
 
 	setcolor(WHITE, BLACK);
-	GetButton("Quit", "Esc", OFFSET_Y + 10);
+	GetButton("Quit", "Esc", OFFSET_Y + 17);
 
 	setcolor(YELLOW, SKYBLUE);
 }
@@ -139,7 +143,7 @@ void StartScene::RenderBirds()
 			{
 				if (updateTime % 2 == 1)
 					gotoxy(x, y + i);
-				
+
 				else
 					gotoxy(x, y + i - 1);
 

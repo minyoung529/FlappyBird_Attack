@@ -1,9 +1,10 @@
 #pragma once
-#include<Windows.h>
-#include<iostream>
-#include<time.h>
-#include<conio.h>
-#include<mmsystem.h>
+#include <Windows.h>
+#include <iostream>
+#include <time.h>
+#include <conio.h>
+#include <mmsystem.h>
+#include "resource.h"
 using namespace std;
 
 void gotoxy(int x, int y);

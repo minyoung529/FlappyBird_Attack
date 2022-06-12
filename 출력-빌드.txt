@@ -1,0 +1,7 @@
+﻿빌드 시작...
+1>------ 빌드 시작: 프로젝트: FlappyBird_Console, 구성: Debug Win32 ------
+1>HelpScene.cpp
+1>StartScene.cpp
+1>코드를 생성하고 있습니다...
+1>FlappyBird_Console.vcxproj -> C:\Users\USER\Documents\FlappyBird_Console\Debug\FlappyBird_Console.exe
+========== 빌드: 성공 1, 실패 0, 최신 0, 생략 0 ==========

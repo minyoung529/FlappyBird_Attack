@@ -92,6 +92,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -174,10 +175,25 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PowerUp.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Slow.h" />
     <ClInclude Include="StartScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FlappyBird_Console.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Data\BGM.wav" />
+    <Media Include="Data\Gravity.wav" />
+    <Media Include="Data\Jump.wav" />
+    <Media Include="Data\PowerUp.wav" />
+    <Media Include="Data\Shoot.wav" />
+    <Media Include="Data\Slow.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
