@@ -50,8 +50,6 @@ END
 // WAVE
 //
 
-JUMP                    WAVE                    "Data\\Jump.wav"
-
 SHOOT                   WAVE                    "Data\\Shoot.wav"
 
 POWER                   WAVE                    "Data\\PowerUp.wav"
@@ -61,6 +59,12 @@ SLOW_ITEM               WAVE                    "Data\\Slow.wav"
 GRAVITY_ITEM            WAVE                    "Data\\Gravity.wav"
 
 BGM                     WAVE                    "Data\\BGM.wav"
+
+FAIL                    WAVE                    "Data\\Fail.wav"
+
+WIN                     WAVE                    "Data\\Win.wav"
+
+JUMP                    WAVE                    "Data\\Jump.wav"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

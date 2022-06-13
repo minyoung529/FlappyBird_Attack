@@ -16,6 +16,7 @@ EndScene::~EndScene()
 
 void EndScene::Init()
 {
+	_setmode(_fileno(stdout), _O_U8TEXT);
 	system("cls");
 
 	gotoxy(OFFSET_X, OFFSET_Y);
@@ -23,50 +24,41 @@ void EndScene::Init()
 	if (Player::GetScore() > Player::GetHighScore())
 	{
 		Player::UpdateHighScore();
+		// 소리 안 나옴
+		PlaySound(MAKEINTRESOURCE(WIN), NULL, SND_RESOURCE | SND_ASYNC);
 
-		string str[] =
+		for (int i = 0; i < 6; i++)
 		{
-			"+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" ,
-			"|c|o|n|g|r|a|t|u|l|a|t|i|o|n|s|!|" ,
-			"+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
-			"\n",
-			"축하합니다! 최고기록 갱신"
-		};
-
-		for (int i = 1; i <= 5; i++)
-		{
-			cout << str[i - 1];
-			gotoxy(OFFSET_X, OFFSET_Y + i);
+			gotoxy(OFFSET_X - 45, OFFSET_Y + i);
+			wcout << winText[i];
 		}
+
+		_setmode(_fileno(stdout), _O_TEXT);
+		gotoxy(OFFSET_X, OFFSET_Y + 12);
+		cout << "★ 축하합니다! 최고 기록 달성! ★";
 	}
 	else
 	{
-		string str[] =
-		{
-			"########    ###    #### ##                   ",
-			"##         ## ##    ##  ##                   ",
-			"##        ##   ##   ##  ##                   ",
-			"######   ##     ##  ##  ##                   ",
-			"##       #########  ##  ##                   ",
-			"##       ##     ##  ##  ##       ### ### ### ",
-			"##       ##     ## #### ######## ### ### ### ",
-			"\n",
-			"다음에는 최고 기록을 갱신해보세요~"
-		};
+		PlaySound(MAKEINTRESOURCE(FAIL), NULL, SND_RESOURCE | SND_ASYNC);
 
-		for (int i = 1; i <= 9; i++)
+		for (int i = 0; i < 10; i++)
 		{
-			cout << str[i - 1];
 			gotoxy(OFFSET_X, OFFSET_Y + i);
+			wcout << failText[i];
 		}
+
+		_setmode(_fileno(stdout), _O_TEXT);
+		gotoxy(OFFSET_X, OFFSET_Y + 12);
+		cout << "▶ 최고 기록 달성 실패! 노력하세요~ ◀";
 	}
 
 
-	cout << endl << endl << endl;
-	cout << "	| SCORE: " << Player::GetScore() << endl;
-	cout << "	| HIGH_SCORE: " << Player::GetHighScore() << endl;
+	gotoxy(OFFSET_X + 10, OFFSET_Y + 15);
+	cout << "▶ SCORE: " << Player::GetScore();
+	gotoxy(OFFSET_X + 10, OFFSET_Y + 17);
+	cout << "▶ HIGH_SCORE: " << Player::GetHighScore();
 
-	cout << endl << endl << endl << endl;
+	gotoxy(OFFSET_X, OFFSET_Y + 25);
 	cout << "다시 하려면 SPACE 키를 누르세요..." << endl;
 }
 

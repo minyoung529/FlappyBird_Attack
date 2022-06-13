@@ -4,6 +4,10 @@
 #include <time.h>
 #include <conio.h>
 #include <mmsystem.h>
+
+#include <io.h>
+#include <fcntl.h>
+
 #include "resource.h"
 using namespace std;
 

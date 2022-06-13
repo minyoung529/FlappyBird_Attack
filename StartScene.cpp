@@ -1,6 +1,4 @@
 ﻿#include "console.h"
-#include <io.h>
-#include <fcntl.h>
 
 #include "SceneManager.h"
 #include "StartScene.h"

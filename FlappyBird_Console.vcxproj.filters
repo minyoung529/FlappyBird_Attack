@@ -165,6 +165,12 @@
     <Media Include="Data\BGM.wav">
       <Filter>리소스 파일</Filter>
     </Media>
+    <Media Include="Data\Win.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Data\Fail.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

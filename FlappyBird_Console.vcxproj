@@ -186,11 +186,13 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Data\BGM.wav" />
+    <Media Include="Data\Fail.wav" />
     <Media Include="Data\Gravity.wav" />
     <Media Include="Data\Jump.wav" />
     <Media Include="Data\PowerUp.wav" />
     <Media Include="Data\Shoot.wav" />
     <Media Include="Data\Slow.wav" />
+    <Media Include="Data\Win.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
