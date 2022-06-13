@@ -28,7 +28,7 @@ void HelpScene::Init()
 	int yPos = 0;
 	for (int i = 0; i < 8; i++)
 	{
-		if (i % 2 == 1 && i < 4) yPos += 5;
+		if (i % 2 == 0 && i <= 4) yPos += 5;
 		else yPos += 2;
 
 		gotoxy(OFFSET_X - 5, OFFSET_Y + yPos - 5);
