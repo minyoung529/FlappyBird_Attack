@@ -36,14 +36,12 @@ int main()
 		{
 			system("cls");
 			DrawCharacter();
-			cout << "\n\n\nThanks for Playing!\n\n\n";
+			gotoxy(86, 17);
+			cout << "Thanks for Playing!\n\n\n\n\n";
+			manager->Release();
 			return 0;
 		}
 
 		Sleep(manager->GetTimeScale());
 	}
-
-	manager->Release();
-
-	DrawCharacter();
 }

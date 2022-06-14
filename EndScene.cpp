@@ -19,13 +19,10 @@ void EndScene::Init()
 	system("cls");
 
 	if (Player::GetScore() > Player::GetHighScore())
-	{
 		playsound(WIN);
-	}
+	
 	else
-	{
 		playsound(FAIL);
-	}
 }
 
 void EndScene::Update()
@@ -50,6 +47,18 @@ void EndScene::ReleaseScene()
 
 void EndScene::PrintWinText()
 {
+	for (int i = 0; i < 20; i++)
+	{
+		gotoxy(OFFSET_X - 50, OFFSET_Y + i - 20);
+		wcout << winImage[i];
+	}
+
+	for (int i = 0; i < 21; i++)
+	{
+		gotoxy(OFFSET_X + 40, OFFSET_Y + i - 20);
+		wcout << winImage2[i];
+	}
+
 	for (int i = 0; i < 6; i++)
 	{
 		gotoxy(OFFSET_X - 45, OFFSET_Y + i);
@@ -63,22 +72,17 @@ void EndScene::PrintWinText()
 
 void EndScene::PrintFailText()
 {
-	// 나ㅣㅇ러ㅣ낭러ㅣ낭러 ㅣ나어리넝리마너ㅗ이ㅜ파ㅣㅘ러ㅚ마도ㅜ리 ㅈ다ㅓ
-	wcout << L"⣿⣿⣿⣿⣿⣿⣿⠟⠋⠉⠁⠈⠉⠙⠻⢿⡿⠿⠛⠋⠉⠙⠛⢿⣿⣿⣿⣿⣿⣿" << endl;
-	wcout << L"⣿⣿⣿⣿⣿⠟⠁⠀⠀⢀⣀⣀⣀⣀⡀⠀⢆⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿  " << endl;
-	wcout << L"⣿⣿⣿⣿⠃⠀⠀⠠⠊⠁⠀⠀⠀⠀⠈⠑⠪⡖⠒⠒⠒⠒⠒⠒⠶⠛⠿⣿⣿⣿ " << endl;
-	wcout << L"⣿⣿⡿⡇⠀⠀⠀⠀⠀⠀⡠⢔⡢⠍⠉⠉⠩⠭⢑⣤⣔⠲⠤⠭⠭⠤⠴⢊⡻⣿ " << endl;
-	wcout << L"⡿⠁⢀⠇⠀⠀⠀⣤⠭⠓⠊⣁⣤⠂⠠⢀⡈⠱⣶⣆⣠⣴⡖⠁⠂⣀⠈⢷⣮⣹ " << endl;
-	wcout << L"⠁⠀⠀⠀⠀⠀⠀⠈⠉⢳⣿⣿⣿⡀⠀⠀⢀⣀⣿⡿⢿⣿⣇⣀⣥⣤⠤⢼⣿⣿ " << endl;
-	wcout << L"⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠑⠚⢹⡟⠉⣑⠒⢺⡇⡀⠀⡹⠀⠀⣀⣴⣽⣿⣿  " << endl;
-	wcout << L"⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⣿⠒⠉⠀⠀⢠⠃⠈⠙⠻⣍⠙⢻⡻⣿⣿⣿  " << endl;
-	wcout << L"⠀⠀⠀⠀⠀⠀⠀⠀⣀⣘⡄⠀⠀⢸⡇⠀⠀⠀⠘⡇⠀⠀⠀⠘⡄⠀⢱⢸⣿⣿	" << endl;
-	wcout << L"⠀⠀⠀⠀⠠⡀⠀⠾⣟⣻⣛⠷⣶⣼⣥⣀⣀⣀⠀⢧⠀⠀⠀⠠⣧⣀⣼⣴⢽⣿  " << endl;
-	wcout << L"⠀⠀⠀⠀⠀⠈⠉⠁⠀⠹⡙⠛⠷⣿⣭⣯⣭⣟⣛⣿⣿⣿⣛⣛⣿⣭⣭⣾⣿⣿ " << endl;
-	wcout << L"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡀⠀⠀⣇⠀⠉⠉⠉⡏⠉⠙⠛⠛⡿⣻⣯⣷⣿⣿⣿  " << endl;
-	wcout << L"⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⡸⠁⣠⣴⣶⣿⣿⣿⣿⣿⣿⣿⣿  " << endl;
-	wcout << L"⣿⣿⣿⣿⣶⣶⣦⣤⣤⣤⣷⣤⣄⣈⣆⣤⣤⣧⣶⣷⣿⡻⣿⣿⣿⣿⣿⣿⣿⣿" << endl;
-	wcout << L"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⢿⣿⣿⣿⣿⣿⣿" << endl;
+	for (int i = 0; i < 15; i++)
+	{
+		gotoxy(OFFSET_X - 50, OFFSET_Y + i - 5);
+		wcout << failImage[i];
+	}
+
+	for (int i = 0; i < 14; i++)
+	{
+		gotoxy(OFFSET_X + 60, OFFSET_Y + i - 5);
+		wcout << failImage2[i];
+	}
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -87,8 +91,6 @@ void EndScene::PrintFailText()
 	}
 
 	_setmode(_fileno(stdout), _O_TEXT);
-
-
 
 	gotoxy(OFFSET_X, OFFSET_Y + 12);
 	cout << "▶ 최고 기록 달성 실패! 노력하세요~ ◀";
