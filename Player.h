@@ -26,8 +26,6 @@ public:
 	void SetIsReverseGravity(bool isRV) { isReverseGravity = isRV; }
 	bool GetIsReverseGravity() { return isReverseGravity; }
 	void SetIsStrong(bool isSt) { isStrong = isSt; }
-	//bool GetIsReverseGravity() { return isReverseGravity; }
-
 
 private:
 	void CheckDead(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X]);

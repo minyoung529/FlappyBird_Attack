@@ -1,6 +1,8 @@
 #pragma once
 #include "Object.h"
 
+class Player;
+
 class Item : public Object
 {
 public:
@@ -19,4 +21,5 @@ private:
 	int timer = 0;
 	bool isStart = false;
 	Item* item;
+	Player* player;
 };

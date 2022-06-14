@@ -48,7 +48,7 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 			position.y += 2;
 		}
 
-		PlaySound(MAKEINTRESOURCE(JUMP), NULL, SND_RESOURCE | SND_ASYNC);
+		playsound(JUMP);
 	}
 	else
 	{
@@ -62,9 +62,10 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 	{
 		int damage = (isStrong) ? 5 : 3;
 		Bullet* newBullet = new Bullet(position, damage);
+		newBullet->Init();
 		bullets.push_back(newBullet);
 
-		PlaySound(MAKEINTRESOURCE(SHOOT), NULL, SND_RESOURCE | SND_ASYNC);
+		playsound(SHOOT);
 	}
 
 	CheckDead(posOnBoard);

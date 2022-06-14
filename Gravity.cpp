@@ -37,5 +37,6 @@ void Gravity::SetPlayerGravity(bool isGravity)
 	Player* player =
 		dynamic_cast<Player*>(scene->FindObjectOfType(BLOCK_TYPE::PLAYER));
 
-	player->SetIsReverseGravity(isGravity);
+	if (player)
+		player->SetIsReverseGravity(isGravity);
 }

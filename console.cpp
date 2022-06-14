@@ -29,3 +29,8 @@ void cursorview()
 	info.dwSize = 1;
 	SetConsoleCursorInfo(hOut, &info);
 }
+
+void playsound(int sound)
+{
+	PlaySound(MAKEINTRESOURCE(sound), NULL, SND_RESOURCE | SND_ASYNC);
+}

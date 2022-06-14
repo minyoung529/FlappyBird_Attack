@@ -19,7 +19,7 @@ StartScene::~StartScene()
 void StartScene::Init()
 {
 	setcolor(YELLOW, SKYBLUE);
-	PlaySound(MAKEINTRESOURCE(BGM), NULL, SND_RESOURCE | SND_ASYNC);
+	playsound(BGM);
 
 	system("cls");
 }

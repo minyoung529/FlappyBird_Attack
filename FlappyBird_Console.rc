@@ -62,7 +62,7 @@ BGM                     WAVE                    "Data\\BGM.wav"
 
 FAIL                    WAVE                    "Data\\Fail.wav"
 
-WIN                     WAVE                    "Data\\Win.wav"
+WIN                     WAVE                    "Data\\WinSound.wav"
 
 JUMP                    WAVE                    "Data\\Jump.wav"
 

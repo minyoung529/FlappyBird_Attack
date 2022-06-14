@@ -28,7 +28,7 @@ public:
 
 private:
 	Scene* curScene;
-	long timeScale = 250;
+	long timeScale = 210;
 public:
 	static SceneManager* sceneManager;
 

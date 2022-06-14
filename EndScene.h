@@ -13,6 +13,10 @@ public:
 	virtual void Update();
 	virtual void ReleaseScene();
 
+	void PrintWinText();
+	void PrintFailText();
+	void PrintAllText();
+
 	wchar_t winText[6][129]
 	{
 		L" ██████╗ ██████╗ ███╗   ██╗ ██████╗ ██████╗  █████╗ ████████╗██╗   ██╗██╗      █████╗ ████████╗██╗ ██████╗ ███╗   ██╗███████╗██╗",

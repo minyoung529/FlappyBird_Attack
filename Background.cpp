@@ -1,4 +1,4 @@
-#include "Background.h"
+﻿#include "Background.h"
 #include "console.h"
 #include "Core.h"
 #include <math.h>
@@ -15,7 +15,7 @@ void DrawFrame()
 		for (int x = -absX; x < FRAME_SIZE_X; x++)
 		{
 			gotoxy(OFFSET_X + x * 2, y);
-			cout << "��";
+			cout << "■";
 		}
 	}
 
@@ -34,21 +34,21 @@ void DrawCrossButton(int x, int y)
 {
 	setcolor(SKYBLUE, SKYBLUE);
 	gotoxy(x + 3, y - 3);
-	cout << "��";
+	cout << "■";
 
 	setcolor(RED, RED);
 	gotoxy(x + 1, y - 2);
-	cout << "��";
+	cout << "■";
 	gotoxy(x + 5, y - 2);
-	cout << "��";
+	cout << "■";
 
 	setcolor(YELLOW, YELLOW);
 	gotoxy(x + 3, y - 2);
-	cout << "��";
+	cout << "■";
 
 	setcolor(SKYBLUE, SKYBLUE);
 	gotoxy(x + 3, y - 1);
-	cout << "��";
+	cout << "■";
 }
 
 void DrawJoyStick(int x, int y, int color)
@@ -63,16 +63,16 @@ void DrawJoyStick(int x, int y, int color)
 	setcolor(color, color);
 
 	gotoxy(x - 5, y - 3);
-	cout << "��";
+	cout << "■";
 
 	gotoxy(x - 7, y - 3);
-	cout << "��";
+	cout << "■";
 
 	gotoxy(x - 5, y - 4);
-	cout << "��";
+	cout << "■";
 
 	gotoxy(x - 7, y - 4);
-	cout << "��";
+	cout << "■";
 }
 
 void DrawSticksAndButtons()
@@ -90,4 +90,22 @@ void DrawSticksAndButtons()
 
 	DrawJoyStick(OFFSET_X + MAX_X * 2, OFFSET_Y + FRAME_SIZE_Y - 1, RED);
 	DrawJoyStick(OFFSET_X + MAX_X * 2 + 10, OFFSET_Y + FRAME_SIZE_Y - 1, SKYBLUE);
+}
+
+void DrawCharacter()
+{			
+	_setmode(_fileno(stdout), _O_U8TEXT);
+
+	wcout << L" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣴⣶⣶⣶⣶⣶⠶⣶⣤⣤⣀⠀⠀⠀⠀⠀⠀			   "	<< endl;
+	wcout << L"⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⠁⠀⢀⠈⢿⢀⣀⠀⠹⣿⣿⣿⣦⣄⠀⠀⠀			  "		<< endl;
+	wcout << L"⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⠿⠀⠀⣟⡇⢘⣾⣽⠀⠀⡏⠉⠙⢛⣿⣷⡖⠀			  "		<< endl;
+	wcout << L"⠀⠀⠀⠀⠀⣾⣿⣿⡿⠿⠷⠶⠤⠙⠒⠀⠒⢻⣿⣿⡷⠋⠀⠴⠞⠋⠁⢙⣿⣄			 "		<< endl;
+	wcout << L"⠀⠀⠀⠀⢸⣿⣿⣯⣤⣤⣤⣤⣤⡄⠀⠀⠀⠀⠉⢹⡄⠀⠀⠀⠛⠛⠋⠉⠹⡇			  "		<< endl;
+	wcout << L"⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣼⣇⣀⣀⣀⣛⣛⣒⣲⢾⡷			 "		<< endl;
+	wcout << L"⢀⠤⠒⠒⢼⣿⣿⠶⠞⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⣼⠃			"	<< endl;
+	wcout << L"⢮⠀⠀⠀⠀⣿⣿⣆⠀⠀⠻⣿⡿⠛⠉⠉⠁⠀⠉⠉⠛⠿⣿⣿⠟⠁⠀⣼⠃⠀			  "		<< endl;
+	wcout << L"⠈⠓⠶⣶⣾⣿⣿⣿⣧⡀⠀⠈⠒⢤⣀⣀⡀⠀⠀⣀⣀⡠⠚⠁⠀⢀⡼⠃⠀⠀			 "		<< endl;
+	wcout << L"⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁				  " << endl;
+
+	_setmode(_fileno(stdout), _O_TEXT);
 }

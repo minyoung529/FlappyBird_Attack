@@ -32,10 +32,14 @@ void GameScene::Init()
 	}
 
 	POSITION pos = { MAX_X - 2, MAX_Y / 2 - 1 };
-	monster = new Monster(pos);
 	player = new Player({ PLAYER_X, MAX_Y / 2 - 3 });
-	currentObjects.push_back(monster);
+	player->Init();
 	currentObjects.push_back(player);
+
+	monster = new Monster(pos);
+	monster->Init();
+	currentObjects.push_back(monster);
+
 
 	setcolor(WHITE, BLACK);
 
@@ -49,10 +53,14 @@ void GameScene::Update()
 
 	if (updateTime % 15 == 0)
 	{
-		Item* item = new Item({ MAX_X, /*rand() % (MAX_Y - 1)*/3 },
-			(ITEM_TYPE)(/*rand() % */(int)ITEM_TYPE::GRAVITY));
+		Item* item = new Item({ MAX_X, rand() % (MAX_Y - 2) },
+			(ITEM_TYPE)(rand() % (int)ITEM_TYPE::COUNT));
+		item->Init();
 		currentObjects.push_back(item);
+	}
 
+	if (updateTime % 7 == 0)
+	{
 		GenerateColumn(currentObjects);
 	}
 
@@ -68,7 +76,7 @@ void GameScene::Update()
 		POSITION pos = currentObjects[i]->GetPosition();
 		currentObjects[i]->Update(map);
 
-		if (isRelease || currentObjects.empty() || i >= currentObjects.size())
+		if (isRelease)
 		{
 			return;
 		}

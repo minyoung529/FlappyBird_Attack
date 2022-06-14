@@ -1,7 +1,10 @@
 #include "Bullet.h"
 #include "Player.h"
+#include "SceneManager.h"
+#include "GameScene.h"
 #include "console.h"
 #include "Core.h"
+#include "Player.h"
 
 Bullet::Bullet() : Object({ PLAYER_X + 1, 0 })
 {
@@ -17,6 +20,10 @@ Bullet::~Bullet()
 
 void Bullet::Init()
 {
+	Object* obj = dynamic_cast<GameScene*>(SceneManager::sceneManager->GetCurrentScene())->
+		FindObjectOfType(BLOCK_TYPE::PLAYER);
+
+	player = dynamic_cast<Player*>(obj);
 }
 
 void Bullet::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
@@ -41,14 +48,18 @@ void Bullet::Render(int offsetX, int offsetY)
 {
 	gotoxy(position.x * 2 + offsetX, position.y + offsetY);
 
+	int bgColor = SKYBLUE;
+
+	if (player)
+	{
+		bgColor = (player->GetIsReverseGravity()) ? BLACK : SKYBLUE;
+	}
+
 	if (damage > 3)
-	{
-		setcolor(RED, SKYBLUE);
-	}
+		setcolor(RED, bgColor);
+	
 	else
-	{
-		setcolor(YELLOW, SKYBLUE);
-	}
+		setcolor(YELLOW, bgColor);
 
 	cout << "¡Ü";
 }

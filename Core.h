@@ -25,7 +25,6 @@ enum class ITEM_TYPE
 {
 	NONE	,
 	SLOW	,
-	BULLETS ,
 	POWERUP ,
 	GRAVITY ,
 	COUNT
@@ -38,6 +37,7 @@ enum class ITEM_TYPE
 #define SKYBLUE		3
 #define GREEN		10
 #define RED			12
+#define LIGHTYELLOW 14
 
 #define PLAYER_X	2
 

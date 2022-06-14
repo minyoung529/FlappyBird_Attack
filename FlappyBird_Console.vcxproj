@@ -192,7 +192,7 @@
     <Media Include="Data\PowerUp.wav" />
     <Media Include="Data\Shoot.wav" />
     <Media Include="Data\Slow.wav" />
-    <Media Include="Data\Win.wav" />
+    <Media Include="Data\WinSound.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

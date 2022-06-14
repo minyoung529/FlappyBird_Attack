@@ -6,6 +6,9 @@
 #include "Gravity.h"
 #include "PowerUp.h"
 
+#include "GameScene.h"
+#include "SceneManager.h"
+
 #include <mmsystem.h>
 
 Item::Item() : itemType(ITEM_TYPE::NONE)
@@ -34,6 +37,10 @@ Item::~Item()
 
 void Item::Init()
 {
+	Object* obj = dynamic_cast<GameScene*>(SceneManager::sceneManager->GetCurrentScene())->
+		FindObjectOfType(BLOCK_TYPE::PLAYER);
+
+	player = dynamic_cast<Player*>(obj);
 }
 
 void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
@@ -50,6 +57,14 @@ void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 		return;
 	}
 
+	position.x -= 1;
+
+	if (position.x == -1)
+	{
+		isDead = true;
+		return;
+	}
+
 	if (posOnBoard[position.y][position.x] == BLOCK_TYPE::PLAYER)
 	{
 		isStart = true;
@@ -58,32 +73,22 @@ void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 		{
 		case ITEM_TYPE::SLOW:
 			item = new Slow();
-			PlaySound(MAKEINTRESOURCE(SLOW_ITEM), NULL, SND_RESOURCE | SND_ASYNC);
-			break;
-
-		case ITEM_TYPE::BULLETS:
+			playsound(SLOW_ITEM);
 			break;
 
 		case ITEM_TYPE::GRAVITY:
-			PlaySound(MAKEINTRESOURCE(GRAVITY_ITEM), NULL, SND_RESOURCE | SND_ASYNC);
+			playsound(GRAVITY_ITEM);
 			item = new Gravity();
 			break;
 
 		case ITEM_TYPE::POWERUP:
 			item = new PowerUp();
-			PlaySound(MAKEINTRESOURCE(POWER), NULL, SND_RESOURCE | SND_ASYNC);
+			playsound(POWER);
 			break;
 		}
 
 		if (item)
 			item->Init();
-	}
-
-	position.x -= 1;
-
-	if (position.x == -1)
-	{
-		isDead = true;
 	}
 }
 
@@ -92,7 +97,20 @@ void Item::Render(int offsetX, int offsetY)
 	if (isStart || isDead) return;
 
 	gotoxy(position.x * 2 + offsetX, position.y + offsetY);
-	setcolor(YELLOW, SKYBLUE);
+
+	int bgColor = (player->GetIsReverseGravity()) ? BLACK : SKYBLUE;
+
+	switch (itemType)
+	{
+	case ITEM_TYPE::SLOW:
+	case ITEM_TYPE::POWERUP:
+		setcolor(LIGHTYELLOW, bgColor);
+		break;
+
+	case ITEM_TYPE::GRAVITY:
+		setcolor(RED, bgColor);
+		break;
+	}
 
 	switch (itemType)
 	{
@@ -100,12 +118,8 @@ void Item::Render(int offsetX, int offsetY)
 		cout << "¡å";
 		break;
 
-	case ITEM_TYPE::BULLETS:
-		cout << "¢À";
-		break;
-
 	case ITEM_TYPE::GRAVITY:
-		cout << "¡à";
+		cout << "¢Õ";
 		break;
 
 	case ITEM_TYPE::POWERUP:

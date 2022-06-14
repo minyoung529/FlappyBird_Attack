@@ -1,6 +1,8 @@
 #pragma once
 #include "Object.h"
 
+class Player;
+
 class Bullet : public Object
 {
 public:
@@ -15,4 +17,5 @@ public:
 
 private:
 	int damage = 0;
+	Player* player;
 };
