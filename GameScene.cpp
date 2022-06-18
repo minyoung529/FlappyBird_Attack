@@ -53,7 +53,7 @@ void GameScene::Update()
 
 	if (updateTime % 15 == 0)
 	{
-		Item* item = new Item({ MAX_X, rand() % (MAX_Y - 2) },
+		Item* item = new Item({ MAX_X - 1, rand() % (MAX_Y - 2) },
 			(ITEM_TYPE)(rand() % (int)ITEM_TYPE::COUNT));
 		item->Init();
 		currentObjects.push_back(item);

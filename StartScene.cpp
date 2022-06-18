@@ -59,20 +59,20 @@ void StartScene::RenderTitle()
 	for (int i = 0; i < 6; i++)
 	{
 		if (updateTime % 2 == 0)
-			gotoxy(OFFSET_X - 20, OFFSET_Y + i - 9);
-		else
-			gotoxy(OFFSET_X - 20, OFFSET_Y + i - 8);
+			gotoxy(OFFSET_X - 50, OFFSET_Y + i - 9);
+		else				  
+			gotoxy(OFFSET_X - 50, OFFSET_Y + i - 8);
 
-		cout << "                                                                                ";
+		cout << "                                                                                                                                            ";
 	}
 
 	_setmode(_fileno(stdout), _O_U8TEXT);
 	for (int i = 0; i < 6; i++)
 	{
 		if (updateTime % 2 == 0)
-			gotoxy(OFFSET_X - 20, OFFSET_Y + i - 8);
+			gotoxy(OFFSET_X - 50, OFFSET_Y + i - 8);
 		else
-			gotoxy(OFFSET_X - 20, OFFSET_Y + i - 9);
+			gotoxy(OFFSET_X - 50, OFFSET_Y + i - 9);
 
 		wcout << title[i];
 	}

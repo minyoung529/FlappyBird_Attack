@@ -75,9 +75,7 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 		if (isDead) return;
 
 		if (bullets[i])
-		{
 			bullets[i]->Update(posOnBoard);
-		}
 	}
 
 	DeleteObject();
