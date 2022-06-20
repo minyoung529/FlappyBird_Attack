@@ -6,7 +6,7 @@
 #include "Player.h"
 using namespace std;
 
-EndScene::EndScene()
+EndScene::EndScene() : score(0), highScore(0)
 {
 }
 
@@ -16,13 +16,17 @@ EndScene::~EndScene()
 
 void EndScene::Init()
 {
+	score = Player::GetScore();
+	highScore = Player::GetHighScore();
 	system("cls");
 
-	if (Player::GetScore() > Player::GetHighScore())
-		playsound(WIN);
-	
+	if (score > highScore)
+	{
+		playsound(L"Data/WinSound.wav");
+		Player::UpdateHighScore();
+	}
 	else
-		playsound(FAIL);
+		playsound(L"Data/Fail.wav");
 }
 
 void EndScene::Update()
@@ -41,7 +45,6 @@ void EndScene::Update()
 
 void EndScene::ReleaseScene()
 {
-	Player::UpdateHighScore();
 	_setmode(_fileno(stdout), _O_TEXT);
 }
 
@@ -101,7 +104,7 @@ void EndScene::PrintAllText()
 	_setmode(_fileno(stdout), _O_U8TEXT);
 	gotoxy(OFFSET_X, OFFSET_Y);
 
-	if (Player::GetScore() > Player::GetHighScore())
+	if (score > highScore)
 	{
 		PrintWinText();
 	}
@@ -111,11 +114,13 @@ void EndScene::PrintAllText()
 	}
 
 	gotoxy(OFFSET_X + 10, OFFSET_Y + 15);
-	cout << "▶ SCORE: " << Player::GetScore();
+	cout << "▶ SCORE: " << score          ;
 	gotoxy(OFFSET_X + 10, OFFSET_Y + 17);
 
-	//sfdsdfjsdfusodfna shdfkasfkd
-	cout << "▶ HIGH_SCORE: " << Player::GetHighScore();
+	if (score > highScore)
+		cout << "▶ HIGH_SCORE: " << score;
+	else
+		cout << "▶ HIGH_SCORE: " << highScore;
 
 	gotoxy(OFFSET_X, OFFSET_Y + 23);
 	cout << "다시 하려면 SPACE 키를 누르세요..." << endl;

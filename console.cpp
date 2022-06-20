@@ -30,9 +30,32 @@ void cursorview()
 	SetConsoleCursorInfo(hOut, &info);
 }
 
-void playsound(int sound)
+// MCI_NOTIFY
+
+void playsound(LPCWSTR name)
 {
-	PlaySound(MAKEINTRESOURCE(sound), NULL, SND_RESOURCE | SND_ASYNC);
+	mciSendCommand(dwID2, MCI_SEEK, MCI_SEEK_TO_START, NULL);
+
+	openEffect.lpstrElementName = name;
+	openEffect.lpstrDeviceType = L"waveaudio";
+
+	mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE | MCI_OPEN_ELEMENT, (DWORD)(LPVOID)&openEffect);
+	// (DWORD)(LPVOID) equals DWORD_PTR, less safevb 
+
+	dwID2 = openEffect.wDeviceID;
+	mciSendCommand(dwID2, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&playEffect);
+}
+
+void playbgm()
+{
+	openBGM.lpstrElementName = L"Data/BGM.wav";
+	openBGM.lpstrDeviceType = L"waveaudio";
+
+	mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE | MCI_OPEN_ELEMENT, (DWORD)(LPVOID)&openBGM);
+	// (DWORD)(LPVOID) equals DWORD_PTR, less safevb 
+
+	dwID = openBGM.wDeviceID;
+	mciSendCommand(dwID, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&playBGM);
 }
 
 void changefont()

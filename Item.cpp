@@ -73,17 +73,17 @@ void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 		{
 		case ITEM_TYPE::SLOW:
 			item = new Slow();
-			playsound(SLOW_ITEM);
+			playsound(L"Data/Slow.wav");
 			break;
 
 		case ITEM_TYPE::GRAVITY:
-			playsound(GRAVITY_ITEM);
+			playsound(L"Data/Gravity.wav");
 			item = new Gravity();
 			break;
 
 		case ITEM_TYPE::POWERUP:
 			item = new PowerUp();
-			playsound(POWER);
+			playsound(L"Data/Power.wav");
 			break;
 		}
 
@@ -104,7 +104,7 @@ void Item::Render(int offsetX, int offsetY)
 	{
 	case ITEM_TYPE::SLOW:
 	case ITEM_TYPE::POWERUP:
-		setcolor(LIGHTYELLOW, bgColor);
+		setcolor(YELLOW, bgColor);
 		break;
 
 	case ITEM_TYPE::GRAVITY:

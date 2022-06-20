@@ -17,6 +17,10 @@ public:
 	void PrintFailText();
 	void PrintAllText();
 
+private:
+	int score;
+	int highScore;
+
 	const wchar_t winText[6][129]
 	{
 		L" ██████╗ ██████╗ ███╗   ██╗ ██████╗ ██████╗  █████╗ ████████╗██╗   ██╗██╗      █████╗ ████████╗██╗ ██████╗ ███╗   ██╗███████╗██╗",

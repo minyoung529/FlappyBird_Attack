@@ -147,9 +147,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Data\Jump.wav">
-      <Filter>리소스 파일</Filter>
-    </Media>
     <Media Include="Data\Shoot.wav">
       <Filter>리소스 파일</Filter>
     </Media>
@@ -159,16 +156,19 @@
     <Media Include="Data\Slow.wav">
       <Filter>리소스 파일</Filter>
     </Media>
-    <Media Include="Data\Gravity.wav">
+    <Media Include="Data\WinSound.wav">
       <Filter>리소스 파일</Filter>
     </Media>
-    <Media Include="Data\BGM.wav">
+    <Media Include="Data\Jump.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Data\Gravity.wav">
       <Filter>리소스 파일</Filter>
     </Media>
     <Media Include="Data\Fail.wav">
       <Filter>리소스 파일</Filter>
     </Media>
-    <Media Include="Data\WinSound.wav">
+    <Media Include="Data\BGM.wav">
       <Filter>리소스 파일</Filter>
     </Media>
   </ItemGroup>

@@ -37,7 +37,7 @@ enum class ITEM_TYPE
 #define SKYBLUE		3
 #define GREEN		10
 #define RED			12
-#define LIGHTYELLOW 14
+#define ORANGE		4
 
 #define PLAYER_X	2
 

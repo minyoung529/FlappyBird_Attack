@@ -9,6 +9,7 @@ SceneManager::SceneManager() : curScene(nullptr)
 	{
 		sceneManager = this;
 	}
+
 }
 
 SceneManager::~SceneManager()

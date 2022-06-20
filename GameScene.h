@@ -28,7 +28,7 @@ public:
 
 public:
 	Object* FindObjectOfType(BLOCK_TYPE type);
-	vector<Object*> FindObjectsOfType(BLOCK_TYPE type);
+	Player* GetPlayer() { return player; }
 
 private:
 	void Draw();
@@ -40,4 +40,15 @@ private:
 	Monster* monster;
 	vector<Object*> currentObjects;
 	bool isRelease = false;
+
+	const char* numbers[7]
+	{
+		"  ____   _______  _______  _   ___  _______  ___      _______   _____   _______  _______ ",
+		" |    | |       ||       || | |   ||       ||   |    |       | |  _  | |  _    ||  _    |",
+		"  |   | |____   ||___    || |_|   ||   ____||   |___ |___    | | |_| | | | |   || | |   |",
+		"  |   |  ____|  | ___|   ||       ||  |____ |    _  |    |   ||   _   || |_|   || | |   |",
+		"  |   | | ______||___    ||___    ||_____  ||   | | |    |   ||  | |  ||___    || |_|   |",
+		"  |   | | |_____  ___|   |    |   | _____| ||   |_| |    |   ||  |_|  |    |   ||       |",
+		"  |___| |_______||_______|    |___||_______||_______|    |___||_______|    |___||_______|"
+	};
 };

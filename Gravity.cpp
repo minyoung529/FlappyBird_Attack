@@ -34,8 +34,10 @@ void Gravity::SetPlayerGravity(bool isGravity)
 	GameScene* scene =
 		dynamic_cast<GameScene*>(SceneManager::sceneManager->GetCurrentScene());
 
-	Player* player =
-		dynamic_cast<Player*>(scene->FindObjectOfType(BLOCK_TYPE::PLAYER));
+	Player* player = nullptr;
+
+	if (scene)
+		player = scene->GetPlayer();
 
 	if (player)
 		player->SetIsReverseGravity(isGravity);

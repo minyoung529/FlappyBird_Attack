@@ -118,20 +118,6 @@ Object* GameScene::FindObjectOfType(BLOCK_TYPE type)
 	}
 }
 
-vector<Object*> GameScene::FindObjectsOfType(BLOCK_TYPE type)
-{
-	vector<Object*> objs;
-	for (Object* obj : currentObjects)
-	{
-		if (obj->GetObjectType() == type)
-		{
-			objs.push_back(obj);
-		}
-	}
-
-	return objs;
-}
-
 void GameScene::Draw()
 {
 	if (isRelease) return;
@@ -144,6 +130,18 @@ void GameScene::Draw()
 	gotoxy(OFFSET_X, OFFSET_Y - 2);
 	cout << "¢º SCORE: " << Player::GetScore() << endl;
 
+	int score = Player::GetScore();
+
+	/*for (int i = 0; i < 7; i++)
+	{
+		for (int j = score * 9; i < score * 9 + 10; j++)
+		{
+			gotoxy(OFFSET_X + j, OFFSET_Y - 10 + i);
+			cout << numbers[j];
+		}
+
+		cout << endl;
+	}*/
 
 	int bgColor = (player->GetIsReverseGravity()) ? BLACK : SKYBLUE;
 

@@ -11,11 +11,15 @@ int Player::highScore = 0;
 Player::Player() : Object({}, BLOCK_TYPE::PLAYER)
 {
 	score = 0;
+	isReverseGravity = false;
+	isStrong = false;
 }
 
 Player::Player(POSITION position) : Object(position, BLOCK_TYPE::PLAYER)
 {
 	score = 0;
+	isReverseGravity = false;
+	isStrong = false;
 }
 
 Player::~Player()
@@ -48,7 +52,7 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 			position.y += 2;
 		}
 
-		playsound(JUMP);
+		playsound(L"Data/Jump.wav");
 	}
 	else
 	{
@@ -65,7 +69,7 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 		newBullet->Init();
 		bullets.push_back(newBullet);
 
-		playsound(SHOOT);
+		playsound(L"Data/Shoot.wav");
 	}
 
 	CheckDead(posOnBoard);
@@ -85,10 +89,13 @@ void Player::Render(int offsetX, int offsetY)
 {
 	gotoxy(position.x * 2 + offsetX, position.y + offsetY);
 
-	int bgColor = (isReverseGravity) ? BLACK : SKYBLUE;
-	setcolor(YELLOW, bgColor);
+	setcolor(BLACK, WHITE);
+	cout << "¡á";
 
-	cout << "¡Ú";
+	int bgColor = (isReverseGravity) ? BLACK : SKYBLUE;
+	gotoxy(position.x * 2 + offsetX+1, position.y + offsetY);
+	setcolor(ORANGE, bgColor);
+	cout << "¢º ";
 
 	for (int i = 0; i < bullets.size(); i++)
 	{
