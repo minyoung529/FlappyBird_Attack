@@ -6,9 +6,10 @@
 
 Monster::Monster()
 {
+	player = nullptr;
 }
 
-Monster::Monster(POSITION position) : Object(position)
+Monster::Monster(POSITION position, Player* player) : Object(position), player(player)
 {
 }
 
@@ -18,10 +19,6 @@ Monster::~Monster()
 
 void Monster::Init()
 {
-	Object* obj = dynamic_cast<GameScene*>(SceneManager::sceneManager->GetCurrentScene())->
-			FindObjectOfType(BLOCK_TYPE::PLAYER);
-
-	player = dynamic_cast<Player*>(obj);
 }
 
 void Monster::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])

@@ -7,7 +7,7 @@ class Monster : public Object
 {
 public:
 	Monster();
-	Monster(POSITION position);
+	Monster(POSITION position, Player* player);
 	virtual ~Monster();
 
 public:

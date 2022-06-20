@@ -34,8 +34,7 @@ void PowerUp::SetPlayerPower(bool isPowerUp)
 	GameScene* scene =
 		dynamic_cast<GameScene*>(SceneManager::sceneManager->GetCurrentScene());
 
-	Player* player =
-		dynamic_cast<Player*>(scene->FindObjectOfType(BLOCK_TYPE::PLAYER));
+	Player* player = scene->GetPlayer();                           
 
 	player->SetIsStrong(isPowerUp);
 }

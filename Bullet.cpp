@@ -6,11 +6,17 @@
 #include "Core.h"
 #include "Player.h"
 
-Bullet::Bullet() : Object({ PLAYER_X + 1, 0 })
+Bullet::Bullet() :
+	Object({ PLAYER_X + 1, 0 }),
+	player(nullptr),
+	damage(0)
 {
 }
 
-Bullet::Bullet(POSITION position, int damage) : Object({ position.x + 1, position.y }), damage(damage)
+Bullet::Bullet(POSITION position, int damage, Player* player) :
+	Object({ position.x + 1, position.y }),
+	damage(damage),
+	player(player)
 {
 }
 
@@ -20,10 +26,6 @@ Bullet::~Bullet()
 
 void Bullet::Init()
 {
-	Object* obj = dynamic_cast<GameScene*>(SceneManager::sceneManager->GetCurrentScene())->
-		FindObjectOfType(BLOCK_TYPE::PLAYER);
-
-	player = dynamic_cast<Player*>(obj);
 }
 
 void Bullet::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])

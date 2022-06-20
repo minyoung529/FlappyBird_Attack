@@ -7,7 +7,7 @@ class Bullet : public Object
 {
 public:
 	Bullet();
-	Bullet(POSITION position, int damage);
+	Bullet(POSITION position, int damage, Player* player);
 	virtual ~Bullet();
 
 public:

@@ -16,17 +16,18 @@ EndScene::~EndScene()
 
 void EndScene::Init()
 {
+	stopbgm();
 	score = Player::GetScore();
 	highScore = Player::GetHighScore();
 	system("cls");
 
 	if (score > highScore)
 	{
-		playsound(L"Data/WinSound.wav");
+		playsound(/*L"Data/WinSound.wav"*/WIN);
 		Player::UpdateHighScore();
 	}
 	else
-		playsound(L"Data/Fail.wav");
+		playsound(/*L"Data/Fail.wav"*/FAIL);
 }
 
 void EndScene::Update()

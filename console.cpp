@@ -30,24 +30,15 @@ void cursorview()
 	SetConsoleCursorInfo(hOut, &info);
 }
 
-// MCI_NOTIFY
-
-void playsound(LPCWSTR name)
+void playsound(int sound)
 {
-	mciSendCommand(dwID2, MCI_SEEK, MCI_SEEK_TO_START, NULL);
-
-	openEffect.lpstrElementName = name;
-	openEffect.lpstrDeviceType = L"waveaudio";
-
-	mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE | MCI_OPEN_ELEMENT, (DWORD)(LPVOID)&openEffect);
-	// (DWORD)(LPVOID) equals DWORD_PTR, less safevb 
-
-	dwID2 = openEffect.wDeviceID;
-	mciSendCommand(dwID2, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&playEffect);
+	PlaySound(MAKEINTRESOURCE(sound), NULL, SND_RESOURCE | SND_ASYNC);
 }
 
 void playbgm()
 {
+	mciSendCommand(dwID, MCI_SEEK, MCI_SEEK_TO_START, NULL);
+
 	openBGM.lpstrElementName = L"Data/BGM.wav";
 	openBGM.lpstrDeviceType = L"waveaudio";
 
@@ -56,6 +47,11 @@ void playbgm()
 
 	dwID = openBGM.wDeviceID;
 	mciSendCommand(dwID, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&playBGM);
+}
+
+void stopbgm()
+{
+	mciSendCommand(dwID, MCI_PAUSE, MCI_NOTIFY, (DWORD)(LPVOID)&openBGM);
 }
 
 void changefont()

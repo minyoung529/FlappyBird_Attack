@@ -8,7 +8,7 @@ class Item : public Object
 public:
 	Item();
 	Item(POSITION position);
-	Item(POSITION position, ITEM_TYPE itemType);
+	Item(POSITION position, ITEM_TYPE itemType, Player* player);
 	virtual ~Item();
 
 public:

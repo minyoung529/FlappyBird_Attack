@@ -23,7 +23,7 @@ Item::Item(POSITION position) : itemType(ITEM_TYPE::NONE)
 	item = nullptr;
 }
 
-Item::Item(POSITION position, ITEM_TYPE itemType) : itemType(itemType)
+Item::Item(POSITION position, ITEM_TYPE itemType, Player* player) : itemType(itemType), player(player)
 {
 	this->position = position;
 	item = nullptr;
@@ -37,10 +37,6 @@ Item::~Item()
 
 void Item::Init()
 {
-	Object* obj = dynamic_cast<GameScene*>(SceneManager::sceneManager->GetCurrentScene())->
-		FindObjectOfType(BLOCK_TYPE::PLAYER);
-
-	player = dynamic_cast<Player*>(obj);
 }
 
 void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
@@ -73,17 +69,17 @@ void Item::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 		{
 		case ITEM_TYPE::SLOW:
 			item = new Slow();
-			playsound(L"Data/Slow.wav");
+			playsound(/*L"Data/Slow.wav"*/SLOW_ITEM);
 			break;
 
 		case ITEM_TYPE::GRAVITY:
-			playsound(L"Data/Gravity.wav");
+			playsound(/*L"Data/Gravity.wav"*/GRAVITY_ITEM);
 			item = new Gravity();
 			break;
 
 		case ITEM_TYPE::POWERUP:
 			item = new PowerUp();
-			playsound(L"Data/Power.wav");
+			playsound(/*L"Data/Power.wav"*/POWER);
 			break;
 		}
 

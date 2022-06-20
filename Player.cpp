@@ -52,7 +52,7 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 			position.y += 2;
 		}
 
-		playsound(L"Data/Jump.wav");
+		playsound(/*L"Data/Jump.wav"*/JUMP);
 	}
 	else
 	{
@@ -65,11 +65,11 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 	if ((GetAsyncKeyState(VK_LSHIFT) & 0x8001) != 0)
 	{
 		int damage = (isStrong) ? 5 : 3;
-		Bullet* newBullet = new Bullet(position, damage);
+		Bullet* newBullet = new Bullet(position, damage, this);
 		newBullet->Init();
 		bullets.push_back(newBullet);
 
-		playsound(L"Data/Shoot.wav");
+		playsound(/*L"Data/Shoot.wav"*/SHOOT);
 	}
 
 	CheckDead(posOnBoard);

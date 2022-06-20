@@ -29,6 +29,7 @@ void gotoxy(int x, int y);
 void setcolor(int color, int bgcolor);
 void fullscreen();
 void cursorview();
-void playsound(LPCWSTR sound);
+void playsound(int sound);
 void playbgm();
+void stopbgm();
 void changefont();

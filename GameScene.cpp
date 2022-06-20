@@ -4,6 +4,7 @@
 #include "Item.h"
 #include "Monster.h"
 #include "Background.h"
+#include <string>
 
 GameScene::GameScene()
 	: player(nullptr)
@@ -36,7 +37,7 @@ void GameScene::Init()
 	player->Init();
 	currentObjects.push_back(player);
 
-	monster = new Monster(pos);
+	monster = new Monster(pos, player);
 	monster->Init();
 	currentObjects.push_back(monster);
 
@@ -45,6 +46,7 @@ void GameScene::Init()
 
 	DrawFrame();
 	DrawSticksAndButtons();
+	playbgm();
 }
 
 void GameScene::Update()
@@ -54,7 +56,7 @@ void GameScene::Update()
 	if (updateTime % 15 == 0)
 	{
 		Item* item = new Item({ MAX_X - 1, rand() % (MAX_Y - 2) },
-			(ITEM_TYPE)(rand() % (int)ITEM_TYPE::COUNT));
+			(ITEM_TYPE)(rand() % (int)ITEM_TYPE::COUNT), player);
 		item->Init();
 		currentObjects.push_back(item);
 	}
@@ -109,39 +111,15 @@ void GameScene::ReleaseScene()
 	}
 }
 
-Object* GameScene::FindObjectOfType(BLOCK_TYPE type)
-{
-	for (Object* obj : currentObjects)
-	{
-		if (obj->GetObjectType() == type)
-			return obj;
-	}
-}
-
 void GameScene::Draw()
 {
 	if (isRelease) return;
 
 	setcolor(BLACK, RED);
-	gotoxy(OFFSET_X, OFFSET_Y - 3);
-	cout << "¢º HIGHSCORE: " << Player::GetHighScore() << endl;
-
-	setcolor(BLACK, GREEN);
 	gotoxy(OFFSET_X, OFFSET_Y - 2);
-	cout << "¢º SCORE: " << Player::GetScore() << endl;
+	cout << " ¢º HIGHSCORE: " << Player::GetHighScore() << " " << endl;
 
-	int score = Player::GetScore();
-
-	/*for (int i = 0; i < 7; i++)
-	{
-		for (int j = score * 9; i < score * 9 + 10; j++)
-		{
-			gotoxy(OFFSET_X + j, OFFSET_Y - 10 + i);
-			cout << numbers[j];
-		}
-
-		cout << endl;
-	}*/
+	DrawNumber();
 
 	int bgColor = (player->GetIsReverseGravity()) ? BLACK : SKYBLUE;
 
@@ -205,6 +183,28 @@ void GameScene::DeleteObject()
 			delete obj;
 			obj = nullptr;
 			i--;
+		}
+	}
+}
+
+void GameScene::DrawNumber()
+{
+	setcolor(WHITE, BLACK);
+	string score = to_string(Player::GetScore());
+	int xOffset = 16 + score.size() * -2;
+
+	for (int k = 0; k < score.size(); k++)
+	{
+		for (int i = 0; i < 7; i++)
+		{
+			int start = (score[k] - '0') * 9;
+			for (int j = start, count = 0; j < start + 9; j++, count++)
+			{
+				gotoxy(OFFSET_X + xOffset + count + k * 9, OFFSET_Y - 10 + i);
+				cout << numbers[i][j];
+			}
+
+			cout << endl;
 		}
 	}
 }
