@@ -50,7 +50,7 @@ void DrawCrossButton(int x, int y)
 	gotoxy(x + 3, y - 1);
 	cout << "■";
 }
-
+ 
 void DrawJoyStick(int x, int y, int color)
 {
 	for (int i = 2; i >= 1; i--)
@@ -112,9 +112,17 @@ void DrawCharacter()
 
 	for (int i = 0; i < 10; i++)
 	{
-		gotoxy(80, 5 + i);
+		gotoxy(80, 15 + i);
 		wcout << doraemon[i] << endl;
 	}
 
 	_setmode(_fileno(stdout), _O_TEXT);
+
+	gotoxy(86, 26);
+	cout << "-----------/\\---------";
+	gotoxy(86, 27);
+	cout << "| Thanks for Playing! |";
+	gotoxy(86, 28);
+	cout << "-----------------------";
+
 }

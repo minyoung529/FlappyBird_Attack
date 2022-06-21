@@ -24,7 +24,7 @@ public:
 	static void UpdateHighScore() { highScore = score; }
 
 	void SetIsReverseGravity(bool isRV) { isReverseGravity = isRV; }
-	bool GetIsReverseGravity() { return isReverseGravity; }
+    bool GetIsReverseGravity() { return isReverseGravity; }
 	void SetIsStrong(bool isSt) { isStrong = isSt; }
 
 private:

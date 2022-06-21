@@ -2,7 +2,6 @@
 #include "console.h"
 #include "Core.h"
 #include "EndScene.h"
-#include "SceneManager.h"
 #include "Bullet.h"
 
 int Player::score = 0;
@@ -39,7 +38,7 @@ void Player::Init()
 void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 {
 	CheckDead(posOnBoard);
-
+	if (isDead)return;
 	if ((GetAsyncKeyState(VK_SPACE) & 0x8001) != 0)
 	{
 		if (!isReverseGravity)
@@ -73,7 +72,8 @@ void Player::Update(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 	}
 
 	CheckDead(posOnBoard);
-
+	if (isDead)return;
+	           
 	for (int i = 0; i < bullets.size(); i++)
 	{
 		if (isDead) return;
@@ -115,7 +115,6 @@ void Player::CheckDead(BLOCK_TYPE posOnBoard[MAX_Y][MAX_X])
 	{
 		isDead = true;
 		Render(OFFSET_X, OFFSET_Y);
-		SceneManager::sceneManager->SetCurrentScene(new EndScene());
 	}
 }
 

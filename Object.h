@@ -29,7 +29,7 @@ public:
 	virtual void Render(int offsetX, int offsetY) = 0;
 
 public:
-	POSITION GetPosition() { return position; }
+	POSITION GetPosition() { if (isDead)return POSITION{ 0,0, }; return position; }
 	BLOCK_TYPE GetObjectType() { return objectType; }
 	bool GetIsDead() { return isDead; }
 

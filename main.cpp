@@ -8,8 +8,8 @@ using namespace std;
 
 int main()
 {
-	cursorview();
 	fullscreen();
+	cursorview();
 	changefont();
 
 	SceneManager* manager = new SceneManager();
@@ -28,9 +28,7 @@ int main()
 			setcolor(SKYBLUE, WHITE);
 			system("cls");
 			DrawCharacter();
-			gotoxy(86, 17);
-			cout << "Thanks for Playing!\n\n\n\n\n";
-			manager->Release();
+   			manager->Release();
 
 			setcolor(WHITE, WHITE);
 			return 0;
