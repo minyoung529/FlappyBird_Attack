@@ -16,10 +16,7 @@ public:
 		return curScene;
 	}
 
-	void Update()
-	{
-		curScene->Update();
-	}
+	void Update();
 
 	void Release()
 	{

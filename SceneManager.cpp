@@ -35,3 +35,8 @@ void SceneManager::SetCurrentScene(Scene* scene)
 	if (curScene)
 		curScene->Init();
 }
+
+void SceneManager::Update()
+{
+	curScene->Update();
+}
